@@ -1,0 +1,3712 @@
+;                              SouthWest Talker Server
+;                                 Master Load File
+;
+; This is a program written in SouthWest's own internal programming language, AP(AutoPatch).
+; When SouthWest is loaded for the very first time, this program will be run to install the
+; default talker setup. If your talker server ever stops functioning, you can place this
+; file in the AutoPatch subdirectory of the directory to which you installed SouthWest. If
+; you do this, you may lose some changes that you have made. Be very careful when running
+; AP programs that did not come directly from the SouthWest website. Please visit the
+; SouthWest website at http://www.talker.com/southwest for more information reguarding the
+; AP language or SouthWest in general. If you have any further questions, you should direct
+; them to Scott Lloyd, the SouthWest programmer, at southwest@talker.com.
+[NAME Default Server Configuration]
+[SET_MSG Creating Directories]
+[MAKE_DIR .\AutoPatch]
+[MAKE_DIR .\Netlinks]
+[MAKE_DIR .\Plugins]
+[MAKE_DIR .\Pictures]
+[MAKE_DIR .\Figlets]
+[MAKE_DIR .\Users]
+[MAKE_DIR .\Rooms]
+[MAKE_DIR .\Spool]
+[MAKE_DIR .\Help]
+[MAKE_DIR .\Misc]
+[SET_MSG Installing Netlink Files]
+[OPEN_FILE .\Netlinks\Cyber City.S]
+> site        = talker.com
+> netport     = 3032
+> password    = test
+> autoconnect = NO
+> incoming    = TRUE
+> outgoing    = TRUE
+> room        = hallway
+[SET_MSG Installing Rooms Files]
+[OPEN_FILE .\Rooms\Corridor.R]
+> You are in the corridor which leads to the back of the mansion. It is very
+> narrow here and the wooden panelled walls seem to press in on you. You can
+> wander to the hallway or into the lounge.
+[OPEN_FILE .\Rooms\Drive.R]
+> You are on the long front gravel drive of Money Mansion. Red brick walls
+> and large bay windows face you along with the two pillars surrounding the
+> entrance to the hallway. Potted plants line the front of the building and
+> trees have been planted on all sides. Beyond them is a white haze where
+> this particular reality ends.
+[OPEN_FILE .\Rooms\Hallway.R]
+> You are in the hallway. The large front door leads out to the drive whilst
+> another smaller door leads into the wizards room. A corridor leads deeper 
+> into the mansion.
+[OPEN_FILE .\Rooms\Lounge.R]
+> You are in the lounge where all tired chatters come and rest for a short
+> while. Some armchairs have been placed around the room and a fire has
+> been stoked in the grate.
+[OPEN_FILE .\Rooms\Wizroom.R]
+> This is the wizroom where only those priviledged few can come and relax
+> away from the hustle and bustle of the rest of the talker. Large comfy 
+> armchairs are placed around the room and there is a large fur rug in front
+> of a warm crackling fire. Pictures of old long forgotten ex-wizes scowl
+> down from the flock wallpapered walls, not surprising really since a lot
+> seem to have been used as dartboards.
+[OPEN_FILE .\Rooms\Jail.S]
+> Well, well, chances are that you got into a little trouble.  One of our
+> administrators will be with you as soon as possible.  Remember, these guys
+> don't have to be so patient as to give you another chance.
+[OPEN_FILE .\Rooms\Map.S]
+> *** A somewhat uninspired map ***
+> 
+>                   lounge
+>                      |       Lost? Go SouthWest
+> drive - hallway - corridor   http://www.talker.com/southwest
+>            |
+>         wizroom    
+>                   
+[OPEN_FILE .\Rooms\Rooms.S]
+> ;This is the rooms manifest file. It lists all defined rooms and their
+> ;properties. The jail is created automaticly. IMPORTANT: The first room
+> ;listed in this file will be the default room. Remember to terminate
+> ;rooms with the [END ROOM] statement. Whitespace is ignored so you may
+> ;tab as much as you want to show node levels for easy eye parsing.
+> [ROOM Hallway]
+> 	[Settings]
+> 		access = PUBLIC
+> 		;Fixed means that the room cannot be changed from
+> 		;public to private (or vice-versa) without using
+> 		;the fix and unfix commands, which are typicaly
+> 		;given to higher-level users.
+> 		fixed  = TRUE
+> 	[Exits]
+> 		Drive
+> 		Wizroom
+> 		Corridor
+> [END ROOM]
+> 
+> [ROOM Drive]
+> 	[Settings]
+> 		access = PUBLIC
+> 		fixed  = FALSE
+> 	[Exits]
+> 		Hallway
+> [END ROOM]
+> 
+> [ROOM Corridor]
+> 	[Settings]
+> 		access = PUBLIC
+> 		fixed  = TRUE
+> 	[Exits]
+> 		Hallway
+> 		Lounge
+> [END ROOM]
+> 
+> [ROOM Wizroom]
+> 	[Settings]
+> 		access = STAFF
+> 		fixed  = TRUE
+> 	[Exits]
+> 		Hallway
+> [END ROOM]
+> 
+> [ROOM Lounge]
+> 	[Settings]
+> 		access = PUBLIC
+> 		fixed  = FALSE
+> 	[Exits]
+> 		Corridor
+> [END ROOM]
+[SET_MSG Installing User Files]
+[OPEN_FILE .\Users\Test.D]
+> password  = NUKyNCCLvgLH.
+> lastlogin = 928105636
+> lastsite  = du26095.scr.ptd.net
+> totalTime = 0
+> wasonfor  = 0
+> desc      = is new here
+> rank      = 5
+> muzzled   = 0
+> visible   = -1
+> gender    = Neither
+> age       = Unknown
+> email     = Unset
+> icq       = Unset
+> logins    = 1
+> pager     = 27
+> enter_msg = enters from the
+> exit_msg  = goes off to the
+> arrested  = 0
+> rank      = 5
+> unread    = 0
+> charecho  = 0
+> visible   = -1
+> expires   = -1
+> forward_email     = 0
+> verified_email    = 0
+> verification_code = 858005
+> unarrest_lev = 0
+[OPEN_FILE .\Users\Test.His]
+> 05-30-1999 11:07pm  ~FB~OLAccount was initially created~RS
+> 05-30-1999 11:07pm  ~FG~OLPROMOTED~RS by a server administrator to User
+> 05-30-1999 11:07pm  ~FG~OLPROMOTED~RS by a server administrator to Wiz
+> 05-30-1999 11:07pm  ~FG~OLPROMOTED~RS by a server administrator to Arch
+> 05-30-1999 11:07pm  ~FG~OLPROMOTED~RS by a server administrator to God
+[SET_MSG Installing System Files]
+[OPEN_FILE .\Misc\Rules.S]
+> +------------------------------------------------------------+
+> 
+> Rule 1: Dont be an ass
+> 
+> Rule 2: Use your common sense
+> 
+> +------------------------------------------------------------+
+[OPEN_FILE .\Misc\Ranks.S]
+> Criminal
+> New
+> User
+> Wiz
+> Arch
+> God
+[OPEN_FILE .\Misc\Login Screen.S]
+> ~FY ____                   __      __
+> ~FY/  _|                   \ \    / /      ~RShttp://www.talker.com/southwest
+> ~FY\  \   _   __    _    _  \ \/\/ / _    ___  _
+> ~FY__\ \ / \ | || _| |_ | |_ \    / / _\ _\ /_| |_~FR.....~RS
+> ~FY|___/ \_/ \__|  \_\  |_\_| \/\/  \__\ |_\  \_~FR$$$$$$$$c~RS
+> ~FG ____________________________             ~FRzF  *$$$$$$$b~RS
+> ~FG< ~FY~OL SouthWest Talker Server~RS   ~FG\          ~FRd$F   "$$$$$$$P
+> ~FG > ~FY========= ====== ======    ~FG\        ~FR$$$F    "P"    .
+> ~FG< ~FT ~OLSouthWest~RS - The one and     ~FG\       ~FRd$$$F  .e$.    z$~RS
+> ~FG >~RS only Windows talker server.  ~FG\     ~FR$$$$$P=d" c^% d$$$~RS
+> ~FG< ~RS Written by Scott Lloyd in the ~FG\___ ~FR$$$$$P=d" c^% d$$$~FG ______________
+> ~FG >~RS belief that talkers should be      ~FR$$$   *$ec.r'$$$$P~FG              /
+> ~FG< ~RS free and easy to run. Long live    ~FR$P     $$""  $$$$"~FG             /
+> ~FG >~RS the freeware!                      ~FR-e$$$$$$L    $$"~FG              /
+> ~FG< ~RS                                     ~FR"$$$$$$$b.  P"~FG              /
+> ~FG >~RS (c) 1999 - Scott Lloyd                ~FR^$$$$$$$$r^~FG              /
+> ~FG<________________________________________________________________/
+[OPEN_FILE .\Misc\Swears.S]
+> shit
+> fuck
+> cunt
+> dick
+> dyke
+> bitch
+[SET_MSG Installing Figlet Fonts]
+[OPEN_FILE .\Figlets\3 x 5.F]
+> 5
+> 3
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+>  #
+> # #
+> ###
+> # #
+> # #
+> 
+> ##
+> # #
+> ##
+> # #
+> ##
+> 
+>  ##
+> #
+> #
+> #
+>  ##
+> 
+> ##
+> # #
+> # #
+> # #
+> ##
+> 
+> ###
+> #
+> ##
+> #
+> ###
+> 
+> ###
+> #
+> ##
+> #
+> #
+> 
+>  ##
+> #
+> # #
+> # #
+>  ##
+> 
+> # #
+> # #
+> ###
+> # #
+> # #
+> 
+> ###
+>  #
+>  #
+>  #
+> ###
+> 
+>  ##
+>   #
+>   #
+> # #
+>  #
+> 
+> # #
+> # #
+> ##
+> # #
+> # #
+> 
+> #
+> #
+> #
+> #
+> ###
+> 
+> # #
+> ###
+> ###
+> # #
+> # #
+> 
+> ###
+> # #
+> # #
+> # #
+> # #
+> 
+>  #
+> # #
+> # #
+> # #
+>  #
+> 
+> ##
+> # #
+> ##
+> #
+> #
+> 
+>  #
+> # #
+> # #
+>  ##
+>   #
+> 
+> ##
+> # #
+> ##
+> # #
+> # #
+> 
+>  ##
+> #
+>  #
+>   #
+> ##
+> 
+> ###
+>  #
+>  #
+>  #
+>  #
+> 
+> # #
+> # #
+> # #
+> # #
+> ###
+> 
+> # #
+> # #
+> # #
+> # #
+>  #
+> 
+> # #
+> # #
+> ###
+> ###
+> # #
+> 
+> # #
+> # #
+>  #
+> # #
+> # #
+> 
+> # #
+> # #
+>  #
+>  #
+>  #
+> 
+> ###
+>   #
+>  #
+> #
+> ###
+> 
+>  #
+> ##
+>  #
+>  #
+> ###
+> 
+> ###
+>   #
+> ###
+> #
+> ###
+> 
+> ###
+>   #
+>  ##
+>   #
+> ###
+> 
+> # #
+> # #
+> ###
+>   #
+>   #
+> 
+> ###
+> #
+> ###
+>   #
+> ###
+> 
+> ###
+> #
+> ###
+> # #
+> ###
+> 
+> ###
+>   #
+>   #
+>   #
+>   #
+> 
+> ###
+> # #
+> ###
+> # #
+> ###
+> 
+> ###
+> # #
+> ###
+>   #
+> ###
+> 
+> ###
+> # #
+> # #
+> # #
+> ###
+[OPEN_FILE .\Figlets\Alpha.F]
+> 5
+> 5
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678970
+>  AA
+> A  A
+> AAAA
+> A  A
+> A  A
+> 
+> BBBB
+> B   B
+> BBBB
+> B   B
+> BBBB
+> 
+>  CCC
+> C
+> C
+> C
+>  CCC
+> 
+> DDD
+> D  D
+> D  D
+> D  D
+> DDD
+> 
+> EEEE
+> E
+> EEE
+> E
+> EEEE
+> 
+> FFFF
+> F
+> FFF
+> F
+> F
+> 
+>  GGG
+> G
+> G  GG
+> G   G
+>  GGG
+> 
+> H  H
+> H  H
+> HHHH
+> H  H
+> H  H
+> 
+> III
+>  I
+>  I
+>  I
+> III
+> 
+>     J
+>     J
+>     J
+> J   J
+>  JJJ
+> 
+> K  K
+> K K
+> KK
+> K K
+> K  K
+> 
+> L
+> L
+> L
+> L
+> LLLL
+> 
+> M   M
+> MM MM
+> M M M
+> M   M
+> M   M
+> 
+> N   N
+> NN  N
+> N N N
+> N  NN
+> N   N
+> 
+>  OOO
+> O   O
+> O   O
+> O   O
+>  OOO
+> 
+> PPPP
+> P   P
+> PPPP
+> P
+> P
+> 
+>  QQQ
+> Q   Q
+> Q   Q
+> Q  QQ
+>  QQQQ
+> 
+> RRRR
+> R   R
+> RRRR
+> R R
+> R  RR
+> 
+>  SSS
+> S
+>  SSS
+>     S
+> SSSS
+> 
+> TTTTT
+>   T
+>   T
+>   T
+>   T
+> 
+> U   U
+> U   U
+> U   U
+> U   U
+>  UUU
+> 
+> V   V
+> V   V
+> V   V
+>  V V
+>   V
+> 
+> W   W
+> W   W
+> W W W
+> W W W
+>  W W
+> 
+> X   X
+>  X X
+>   X
+>  X X
+> X   X
+> 
+> Y   Y
+>  Y Y
+>   Y
+>   Y
+>   Y
+> 
+> ZZZZZ
+>    Z
+>   Z
+>  Z
+> ZZZZZ
+> 
+>  11
+> 111
+>  11
+>  11
+> 1111
+> 
+>  22
+> 2  2
+>   2
+>  2
+> 2222
+> 
+> 333
+>    3
+>  33
+>    3
+> 333
+> 
+> 4  4
+> 4  4
+> 4444
+>    4
+>    4
+> 
+> 5555
+> 5
+> 555
+>    5
+> 555
+> 
+>   6
+>  6
+> 6666
+> 6   6
+>  666
+> 
+> 77777
+>    7
+>   7
+>   7
+>   7
+> 
+>  888
+> 8   8
+>  888
+> 8   8
+>  888
+> 
+>  9999
+> 9   9
+>  9999
+>    9
+>   9
+> 
+>  000
+> 0  00
+> 0 0 0
+> 00  0
+>  000
+[OPEN_FILE .\Figlets\Bubble.F]
+> 4
+> 6
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+>   __
+>  (  )
+>  /__\
+> (_)(_)
+> 
+>  ___
+> (  ,)
+>  ) ,\
+> (___/
+> 
+>   __
+>  / _)
+> ( (_
+>  \__)
+> 
+>  ___
+> (   \
+>  ) ) )
+> (___/
+> 
+>  ___
+> (  _)
+>  ) _)
+> (___)
+> 
+>  ___
+> (  _)
+>  ) _)
+> (_)
+> 
+>   __
+>  / _)
+> ( (/\
+>  \__/
+> 
+>  _  _
+> ( )( )
+>  )__(
+> (_)(_)
+> 
+>  __
+> (  )
+>  )(
+> (__)
+> 
+>    __
+>   (  )
+>  __)(
+> (___/
+> 
+>  _ _
+> ( ) )
+>  )  \
+> (_)\_)
+> 
+>  __
+> (  )
+>  )(__
+> (____)
+> 
+>  _  _
+> ( \/ )
+>  )  (
+> (_\/_)
+> 
+>  _  _
+> ( \( )
+>  )  (
+> (_)\_)
+> 
+>   __
+>  /  \
+> ( () )
+>  \__/
+> 
+>  ___
+> (  ,\
+>  ) _/
+> (_)
+> 
+>   __
+>  /  \
+> ( () )
+>  \___\
+> 
+>  ___
+> (  ,)
+>  )  \
+> (_)\_)
+> 
+>  ___
+> / __)
+> \__ \
+> (___/
+> 
+>  ____
+> (_  _)
+>   )(
+>  (__)
+> 
+>  _  _
+> ( )( )
+>  )()(
+>  \__/
+> 
+>  _  _
+> ( )( )
+>  \\//
+>  (__)
+> 
+>  _  _
+> ( /\ )
+> \    /
+>  \/\/
+> 
+>  _  _
+> ( \/ )
+>  )  (
+> (_/\_)
+> 
+>  _  _
+> ( \/ )
+>  \  /
+> (__/
+> 
+>  ___
+> (_  )
+>  / /
+> (___)
+> 
+>  __
+> (  )
+>  )(
+> (__)
+> 
+>  ___
+> (__ \
+> / __/
+> \___)
+> 
+>  ___
+> (__ )
+>  (_ \
+> (___/
+> 
+>   __
+>  / ,)
+> (_  _)
+>   (_)
+> 
+>  ___
+> / __)
+> \__ \
+> (___/
+> 
+>   _
+>  / )
+> / , \
+> \___/
+> 
+>  ___
+> (__ )
+>  / /
+> (_/
+> 
+>  ___
+> ( , )
+> / , \
+> \___/
+> 
+>  ___
+> / , \
+> \   /
+>  (_/
+> 
+>   __
+>  /  \
+> ( () )
+>  \__/
+[OPEN_FILE .\Figlets\Keyboard.F]
+> 4
+> 6
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+>  ____
+> ||A ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||B ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||C ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||D ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||E ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||F ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||G ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||H ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||I ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||J ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||K ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||L ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||M ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||N ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||O ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||P ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||Q ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||R ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||S ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||T ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||U ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||V ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||W ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||X ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||Y ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||Z ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||1 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||2 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||3 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||4 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||5 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||6 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||7 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||8 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||9 ||
+> ||__||
+> |/__\|
+> 
+>  ____
+> ||0 ||
+> ||__||
+> |/__\|
+[OPEN_FILE .\Figlets\Reverse.F]
+> 11
+> 11
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+> ===========
+> ====   ====
+> ===     ===
+> ==  ===  ==
+> =  =====  =
+> =  =====  =
+> =         =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> ===========
+> 
+> ===========
+> =       ===
+> =  ====  ==
+> =  =====  =
+> =  ====  ==
+> =       ===
+> =  ====  ==
+> =  =====  =
+> =  ====  ==
+> =       ===
+> ===========
+> 
+> ===========
+> ===      ==
+> ==  ====  =
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> ==  ====  =
+> ===      ==
+> ===========
+> 
+> ===========
+> =        ==
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =        ==
+> ===========
+> 
+> ===========
+> =         =
+> =  ========
+> =  ========
+> =  ========
+> =       ===
+> =  ========
+> =  ========
+> =  ========
+> =         =
+> ===========
+> 
+> ===========
+> =         =
+> =  ========
+> =  ========
+> =  ========
+> =       ===
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> ===========
+> 
+> ===========
+> ==       ==
+> =   ===   =
+> =  =====  =
+> =  ========
+> =  ========
+> =  ====   =
+> =  =====  =
+> =   ==   =
+> ==       ==
+> ===========
+> 
+> ===========
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =         =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> ===========
+> 
+> ===========
+> ===     ===
+> ====   ====
+> ====   ====
+> ====   ====
+> ====   ====
+> ====   ====
+> ====   ====
+> ====   ====
+> ===     ===
+> ===========
+> 
+> ===========
+> =====    ==
+> ======  ===
+> ======  ===
+> ======  ===
+> ======  ===
+> ======  ===
+> =  ===  ===
+> =  ===  ===
+> ==      ===
+> ===========
+> 
+> ===========
+> =  =====  =
+> =  ====  ==
+> =  ===  ===
+> =  ==  ====
+> =      ====
+> =  ===  ===
+> =  ====  ==
+> =  =====  =
+> =  ==== = =
+> ===========
+> 
+> ===========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =  ========
+> =         =
+> ===========
+> 
+> ===========
+> =  =====  =
+> =   ===   =
+> =  =   =  =
+> =  == ==  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> =  =====  =
+> ===========
+> 
+> ===========
+> =  =====  =
+> =   ====  =
+> =   ====  =
+> =  = ===  =
+> =  =  ==  =
+> =  ==  =  =
+> =  ===    =
+> =  ====   =
+> =  =====  =
+> ===========
+> 
+> ==========
+> ===    ===
+> ==  ==  ==
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> ==  ==  ==
+> ===    ===
+> ==========
+> 
+> ==========
+> =       ==
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =       ==
+> =  =======
+> =  =======
+> =  =======
+> =  =======
+> ==========
+> 
+> ==========
+> ==      ==
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  =  =  =
+> =  ==    =
+> ==      ==
+> ==========
+> 
+> ==========
+> =       ==
+> =  ====  =
+> =  ====  =
+> =  ===   =
+> =      ===
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> ==========
+> 
+> ==========
+> ==      ==
+> =  ====  =
+> =  ====  =
+> ==  ======
+> ====  ====
+> ======  ==
+> =  ====  =
+> =  ====  =
+> ==      ==
+> ==========
+> 
+> ==========
+> =        =
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ==========
+> 
+> ==========
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =   ==   =
+> ==      ==
+> ==========
+> 
+> ==========
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =   ==   =
+> ==  ==  ==
+> ==  ==  ==
+> ===    ===
+> ====  ====
+> ==========
+> 
+> ==========
+> = ====== =
+> = ====== =
+> = ====== =
+> = ====== =
+> = ==  == =
+> = ==  == =
+> =        =
+> ==  ==  ==
+> ==  ==  ==
+> ==========
+> 
+> ==========
+> =   ==   =
+> ==  ==  ==
+> ==  ==  ==
+> ===    ===
+> ====  ====
+> ===    ===
+> ==  ==  ==
+> ==  ==  ==
+> =  ====  =
+> ==========
+> 
+> ==========
+> =  ====  =
+> =   ==   =
+> ==  ==  ==
+> ==  ==  ==
+> ===    ===
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ==========
+> 
+> ==========
+> =        =
+> ======  ==
+> =====  ===
+> =====  ===
+> ====  ====
+> ===  =====
+> ===  =====
+> ==  ======
+> =        =
+> ==========
+> 
+> ==========
+> ====  ====
+> ===   ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ====  ====
+> ==      ==
+> ==========
+> 
+> ==========
+> ====   ===
+> ==   =   =
+> =   ===  = 
+> ======   =
+> =====   ==
+> ====   ===
+> ===   ====
+> ==   =====
+> =        =
+> ==========
+> 
+> ===========
+> ====   ====
+> ==   =   ==
+> =   ===   =
+> ======   ==
+> ====    ===
+> ======   ==
+> =   ===   =
+> ==   =   ==
+> ====   ====
+> ===========
+> 
+> ===========
+> ======  ===
+> =====   ===
+> ====    ===
+> ===  =  ===
+> ==  ==  ===
+> =  ===  ===
+> =         =
+> ======  ===
+> ======  ===
+> ===========
+> 
+> ===========
+> =         =
+> =  ========
+> =  ========
+> =  =    ===
+> =   ===  ==
+> =  =====  =
+> ========  =
+> =  ====  ==
+> ===     ===
+> ===========
+> 
+> ===========
+> ==       ==
+> =  =====  =
+> =  ========
+> =       ===
+> =   ===  ==
+> =  =====  =
+> =  =====  =
+> ==  ===   =
+> ===     ===
+> ===========
+> 
+> ===========
+> =         =
+> =  =====  =
+> =======  ==
+> ======  ===
+> =====  ====
+> ====  =====
+> ====  =====
+> ====  =====
+> ====  =====
+> ===========
+> 
+> ===========
+> ===     ===
+> ==  ===  ==
+> =  =====  =
+> ==  ===  ==
+> ===     ===
+> ==  ===  ==
+> =  =====  =
+> ==  ===  ==
+> ===     ===
+> ===========
+> 
+> ===========
+> ===     ===
+> ==  ===   =
+> =  =====  =
+> =  =====  =
+> ==  ===   =
+> ====   =  =
+> ========  =
+> =  =====  =
+> ==       ==
+> ===========
+> 
+> ==========
+> ==      ==
+> =   ==   =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =  ====  =
+> =   ==   =
+> ==      ==
+> ==========
+[OPEN_FILE .\Figlets\SouthWest.F]
+> 5
+> 5
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!^#*()'/\|:[]->
+>  ###
+> #   #
+> #####
+> #   #
+> #   #
+> 
+> ####
+> #   #
+> ####
+> #   #
+> ####
+> 
+>  ###
+> #   #
+> #
+> #   #
+>  ###
+> 
+> ####
+> #   #
+> #   #
+> #   #
+> ####
+> 
+> #####
+> #
+> ###
+> #
+> #####
+> 
+> #####
+> #
+> ###
+> #
+> #
+> 
+>  ###
+> #   
+> #  ## 
+> #   #
+>  ###
+> 
+> #   #
+> #   #
+> #####
+> #   #
+> #   #
+> 
+> #####
+>   #
+>   #
+>   #
+> #####
+> 
+>  ###
+>   #
+>   #
+> # #
+>  ##
+> 
+> #  ##
+> # #
+> ##
+> # #
+> #  ##
+> 
+> #
+> #
+> #
+> #   
+> #####
+> 
+> #   #
+> ## ##
+> # # #
+> # # #
+> #   #
+> 
+> #   #
+> ##  #
+> # # #
+> #  ##
+> #   #
+> 
+>  ###
+> #   #
+> #   #
+> #   #
+>  ###
+> 
+> ####
+> #   #
+> ####
+> #
+> #
+> 
+>  ###
+> #   #
+> # # #
+> #  ##
+>  ####
+> 
+> ####
+> #   #
+> ####
+> #  #
+> #   #
+> 
+>  ####
+> #   
+>  ###
+>     #
+> ####
+> 
+> #####
+>   #
+>   #
+>   #
+>   #
+> 
+> #   #
+> #   #
+> #   #
+> #   #
+>  ###
+> 
+> #   #
+> #   #
+> #   #
+>  # #
+>   #
+> 
+> #   #
+> # # #
+> # # #
+> # # #
+>  # #
+> 
+> #   #
+>  # #
+>   #
+>  # #
+> #   #
+> 
+> #   #
+>  # #
+>   #
+>   #
+>   #
+> 
+> #####
+>     #
+>   ##
+>  #
+> #####
+> 
+>  ##
+> # #
+>   #
+>   #
+> #####
+>  
+>  ###
+> #   #
+>    #
+>   #
+> #####
+> 
+> #####
+>    #
+>  ##
+>    #
+> #####
+> 
+> #   #
+> #   #
+> #####
+>     #
+>     #
+> 
+> #####
+> #
+> ####
+>     #
+> ####
+> 
+>  #
+> #
+> ####
+> #   #
+> ####
+> 
+> #####
+>     #
+>     #
+>    #
+>    #
+> 
+>  ###
+> #   #
+>  ###
+> #   #
+>  ###
+> 
+>  ###
+> #   #
+>  ####
+>     #
+>     #
+> 
+>  ###
+> #   #
+> #   #
+> #   #
+>  ###
+> 
+>   #
+>   #
+>   #
+> 
+>   #
+> 
+>   #
+>  # #
+>  # #
+> #   #
+> #   #
+> 
+>  # #
+> #####
+>  # #
+> #####
+>  # #
+> 
+> # # #
+>  ###
+> #####
+>  ###
+> # # #
+> 
+>  #
+> #
+> #
+> #
+>  #
+> 
+> #
+>  #
+>  #
+>  #
+> #
+> 
+>  ##
+>   #
+> 
+> 
+> 
+> 
+>     #
+>    #
+>   #
+>  #
+> #
+> 
+> #
+>  #
+>   #
+>    #
+>     #
+> 
+>    #
+>    #
+>    #
+>    #
+>    #
+> 
+> 
+>    #
+> 
+>    #
+> 
+> 
+> ###
+> #
+> #
+> #
+> ###
+> 
+> ###
+>   #
+>   #
+>   #
+> ###
+> 
+> 
+> 
+> #####
+> 
+> 
+> 
+> #
+>  #
+>   #
+>  #
+> #
+[OPEN_FILE .\Figlets\Tinker-Toy.F]
+> 5
+> 5
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+>   O
+>  / \
+> o---o
+> |   |
+> o   o
+> 
+> o--o
+> |   |
+> O--o
+> |   |
+> o--o
+> 
+>   o-o
+>  /
+> O
+>  \
+>   o-o
+> 
+> o-o
+> |  \
+> |   O
+> |  /
+> o-o
+> 
+> o--o
+> |
+> O-o
+> |
+> o--o
+> 
+> o--o
+> |
+> O-o
+> |
+> o
+> 
+>  o-o
+> o
+> |  -o
+> o   |
+>  o-o
+> 
+> o  o
+> |  |
+> O--O
+> |  |
+> o  o
+> 
+> o-O-o
+>   |
+>   |
+>   |
+> o-O-o
+> 
+>     o
+>     |
+>     |
+>  \  |
+>   o-O
+> 
+> o  o
+> | /
+> OO
+> | \
+> o  o
+> 
+> o
+> |
+> |
+> |
+> O---
+> 
+> o   o
+> |\ /|
+> | O |
+> |   |
+> o   o
+> 
+> o   o
+> |\  |
+> | \ |
+> |  \|
+> o   o
+> 
+>  o-o
+> o   o
+> |   |
+> o   o
+>  o-o
+> 
+> o--o
+> |   |
+> O--o
+> |
+> o
+> 
+>  o-o
+> o   o
+> |   |
+> o   O
+>  o-O\
+> 
+> o--o
+> |   |
+> O-Oo
+> |  \
+> o   o
+> 
+>  o-o
+> |
+>  o-o
+>     |
+> o--o
+> 
+> o-O-o
+>   |
+>   |
+>   |
+>   o
+> 
+> o   o
+> |   |
+> |   |
+> |   |
+>  o-o
+> 
+> o   o
+> |   |
+> o   o
+>  \ /
+>   o
+> 
+>  o  o
+>  |  |
+>  o  o
+>  |/\|
+>  o  o
+> 
+> o   o
+>  \ /
+>   O
+>  / \
+> o   o
+> 
+> o   o
+>  \ /
+>   O
+>   |
+>   o
+> 
+> o---o
+>    /
+>  -O-
+>  /
+> o---o
+> 
+>   0
+>  /|
+> o |
+>   |
+> o-o-o
+> 
+>  --
+> o  o
+>   /
+>  /
+> o--o
+> 
+> o-o
+>    |
+>  oo
+>    |
+> o-o
+> 
+> o  o
+> |  |
+> o--O
+>    |
+>    o
+> 
+> o--o
+> |
+> o-o
+>    |
+> o-o
+> 
+>   o
+>  /
+> O--o
+> o   |
+>  o-o
+> 
+> o---o
+>    /
+>   o
+>   |
+>   o
+> 
+>  o-o
+> |   |
+>  o-o
+> |   |
+>  o-o
+> 
+>  o-o
+> |   o
+>  o--O
+>    /
+>   o
+> 
+>  o-o
+> o  /o
+> | / |
+> o/  o
+>  o-o
+[SET_MSG Configuring Server]
+[OPEN_FILE .\SouthWest.S]
+> ;                  =================================
+> ;                  =    SouthWest Talker Server    =
+> ;                  =================================
+> ;                      Server Configuration File
+> 
+> ;This is the SouthWest System Configuration File. You may manually change
+> ;settings to your talker here.
+> 
+> ;Sockets
+> ;=======
+> 
+> ;To make the binding of a socket random set it to 0
+> main_port    = 5000
+> netlink_port = 5001
+> http_port    = 5002
+> 
+> ;Talker
+> ;======
+> 
+> talker_name    = SouthWest Beta
+> figlet         = SouthWest
+> smtp_server    = postoffice.ptd.net
+> email_address  = some@where.com
+> 
+> ;Policies
+> ;========
+> 
+> max_users            = 50
+> idle_user_timeout    = 15
+> timeout_max_level    = GOD
+> swear_ban            = OFF
+> purge_period         = 45
+> 
+> ;Boot
+> ;====
+> 
+> no_splashscreen     = TRUE
+> site_at_startup     = NO
+> autoconnect_netlinks = YES
+> 
+> ;Gatecrashing	
+> ;============
+> allow_gatecrashing  = YES
+> gatecrash_level     = GOD
+> 
+> ; ***                     Made in the USA                   ***
+[SET_MSG Installing help files]
+[OPEN_FILE .\Help\addhist.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS addhist
+> ~FBUsage~FT:~RS   addhist ~FY<~RSuser~FY>~RS ~FY<~RScomment~FY>~RS~RS
+> 
+> Adds a line to a user's history file.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\afk.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS afk
+> ~FBUsage~FT:~RS   afk ~FR[~RSafk message~FR]~RS~RS
+> 
+> Designates yourself as 'away from keyboard'. You will remain so until
+> you press enter again.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\age.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS age
+> ~FBUsage~FT:~RS   age ~FY<~RSage~FY>~RS~RS
+> 
+> Sets your age.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\bbcast.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS bbcast
+> ~FBUsage~FT:~RS   bbcast ~FY<~RSmessage~FY>~RS~RS
+> 
+> Same as broadcast only adds an audible bell.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\bcast.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS bcast
+> ~FBUsage~FT:~RS   bcast ~FY<~RSmessage~FY>~RS~RS
+> 
+> Broadcasts a message to all users in the talker.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\cbuff.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS cbuff
+> ~FBUsage~FT:~RS   cbuff ~RS
+> 
+> Clears the room conversation buffer so that users cannot retrieve it by
+> using the review command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\cemote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS cemote
+> ~FBUsage~FT:~RS   cemote ~FY<~RSroom clone is in~FY>~RS ~FY<~RSmessage~FY>~RS~RS
+> 
+> Allows you to emote through your clone.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\charecho.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS charecho
+> ~FBUsage~FT:~RS   charecho ~RS
+> 
+> Toggles whether your keystrokes will be echoed back to you. If you are
+> seeing two charictors per keystroke or are not seeing your keystrokes at
+> all, you should use this command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\clearline.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS clearline
+> ~FBUsage~FT:~RS   clearline ~FY<~RSline~FY>~RS~RS
+> 
+> Clears a pre-login socket. This is used to clear hung logins.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\clone.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS clone
+> ~FBUsage~FT:~RS   clone ~FY<~RSroom~FY>~RS~RS
+> 
+> Creates a clone of you in the specified room. Clones allow you to talk
+> in more than one room at a time. To destroy any clones that you have
+> made, use the destroy command. To talk or emote through your clone, use
+> csay and cemote.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\cls.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS cls
+> ~FBUsage~FT:~RS   cls ~RS
+> 
+> Sends a string of carriage returns and line feeds to your terminal in an
+> attemp to clear the screen. The ammount of carriage returns sent is
+> based on your pager setting. Use the pager command to set this.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\color.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS color
+> ~FBUsage~FT:~RS   color ~RS
+> 
+> Sends a test screen to you. This can be used to determine which colors
+> and formatting your client application supports. It can also be used as
+> a reference to the NUTS color system.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\commands.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS commands
+> ~FBUsage~FT:~RS   commands ~RS
+> 
+> Shows a list of all commands available for your current rank.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\connect.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS connect
+> ~FBUsage~FT:~RS   connect ~FR[~RSnetlink~FR]~RS~RS
+> 
+> Connects a registered Netlink. If no netlink is specified, a list of all
+> available Netlinks is given.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\csay.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS csay
+> ~FBUsage~FT:~RS   csay ~FY<~RSroom clone is in~FY>~RS
+> ~FY<~RSmessage~FY>~RS~RS
+> 
+> Allows you to talk through your clone.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\demote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS demote
+> ~FBUsage~FT:~RS   demote ~FY<~RSuser~FY>~RS~RS
+> 
+> Demotes a user one level.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\desc.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS desc
+> ~FBUsage~FT:~RS   desc ~FR[~RS~FY<~RSdescription~FY>~RS~FR]~RS~RS
+> 
+> If no argument is given, using desc will return your current description.
+> If an argument is given, desc will set your description to this argument.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\destroy.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS destroy
+> ~FBUsage~FT:~RS   destroy ~FY<~RSroom clone is in~FY>~RS~RS
+> 
+> Destroys your clone in a given room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\disconnect.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS disconnect
+> ~FBUsage~FT:~RS   disconnect ~FR[~RSnetlink~FR]~RS~RS
+> 
+> Disconnects a registered Netlink. If no netlink is specified, a list of
+> all available Netlinks is given.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\echo.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS echo
+> ~FBUsage~FT:~RS   echo ~FY<~RStext~FY>~RS~RS
+> 
+> Echos text to all users in the room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\email.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS email
+> ~FBUsage~FT:~RS   email ~FR[~RS~FY<~RSemail address~FY>~RS~FR]~RS
+> 
+> Sets your email address.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\entpro.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS entpro
+> ~FBUsage~FT:~RS   entpro ~RS
+> 
+> Invokes the internal line editor to allow you to enter a profile that
+> will appear when a user uses the examine command on you.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\examine.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS examine
+> ~FBUsage~FT:~RS   examine ~FY<~RSuser~FY>~RS~RS
+> 
+> Shows information on a user as well as his profile.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\figlet.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS figlet
+> ~FBUsage~FT:~RS   figlet ~FR[~RS~FY<~RSfiglet font~FY>~RS~FR]~RS~RS
+> 
+> Changes the figlet font. If no argument is give, all available figlet
+> fonts are listed. Figlet fonts are used in the greet command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\fix.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS fix
+> ~FBUsage~FT:~RS   fix ~RS
+> 
+> Fixes access to the room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\forwarding.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS forwarding
+> ~FBUsage~FT:~RS   forwarding ~RS
+> 
+> Toggles whether the server should forward your talker mail to your
+> email. You must verify your email address using sendver and verify
+> before using this command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\gender.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS gender
+> ~FBUsage~FT:~RS   gender male/female/neither~RS
+> 
+> Sets your gender. You may set your gender to male, female, or neither.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\go.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS go
+> ~FBUsage~FT:~RS   go ~FY<~RSroom~FY>~RS ~FR[~RS~FY<~RSpassword~FY>~RS~FR]~RS~RS
+> 
+> Moves you to a different room. If you are not a member of staff, you may
+> be restricted to moving into adjacent rooms only.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\greet.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS greet
+> ~FBUsage~FT:~RS   greet ~FY<~RStext~FY>~RS~RS
+> 
+> Sends a message in figlet text. The figlet font can be changed by using
+> the figlet command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\help.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS help
+> ~FBUsage~FT:~RS   help ~FR[~RScommand~FR]~RS~RS
+> 
+> If there is no argument given, this command will display a list of all
+> commands available for your current rank. If an argument is given, a help
+> file will be displayed for the command specified, should one exist.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\history.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS history
+> ~FBUsage~FT:~RS   history ~FY<~RSuser~FY>~RS~RS
+> 
+> Displays a user's history file.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\home.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS home
+> ~FBUsage~FT:~RS   home ~RS
+> 
+> If you are in a Netlink, this command will allow you to return to your
+> home service immediatly.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\inmsg.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS inmsg
+> ~FBUsage~FT:~RS   inmsg ~FY<~RSmessage~FY>~RS~RS
+> 
+> Sets the message that users see when you enter a room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\invis.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS invis
+> ~FBUsage~FT:~RS   invis ~RS
+> 
+> Makes you invisible to other users below your rank. This command will
+> effectivly cloak you in all who and look screens but users can still
+> talk to you through tells. If you talk while cloaked your name will
+> be replaced with 'A shadow'.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\kill.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS kill
+> ~FBUsage~FT:~RS   kill ~FY<~RSuser~FY>~RS~RS
+> 
+> Kicks a user off the talker. You cannot use kill on a user of equal or
+> greater rank than yourself.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\kjob.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS kjob
+> ~FBUsage~FT:~RS   kjob ~FY<~RSmail queue ID~FY>~RS~RS
+> 
+> Removes a job from the mailspool. Use the mailsys command to retrieve
+> the queue ID which will be needed to specify which job to delete.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\look.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS look
+> ~FBUsage~FT:~RS   look ~RS
+> 
+> Returns a description of the room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\mailsys.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS mailsys
+> ~FBUsage~FT:~RS   mailsys ~RS
+> 
+> This command will give a status of the SouthWest mailspool. All outgoing
+> email is placed into the spool to prevent abuse. The spool allows for
+> a gradual release of mail to prevent abuse and conserve on processing.
+> To kill a job in the spool use the kjob command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\makeinvis.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS makeinvis
+> ~FBUsage~FT:~RS   makeinvis ~FY<~RSuser~FY>~RS~RS
+> 
+> Forces a user into invisibility.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\makevis.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS makevis
+> ~FBUsage~FT:~RS   makevis ~FY<~RSuser~FY>~RS~RS
+> 
+> Forces a user into visiblity.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\map.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS map
+> ~FBUsage~FT:~RS   map ~RS
+> 
+> Gives a map of the talker's room structure.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\move.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS move
+> ~FBUsage~FT:~RS   move ~FY<~RSuser~FY>~RS ~FR[~RS~FY<~RSroom~FY>~RS~FR]~RS~RS
+> 
+> If no second argument is given, the user will be moved into the same
+> room that you are in. If a second argument is given, the user will be
+> moved into that room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\muzzle.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS muzzle
+> ~FBUsage~FT:~RS   muzzle ~FY<~RSuser~FY>~RS~RS
+> 
+> Puts a muzzle on a user, prohibiting him from communicating.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\netstat.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS netstat
+> ~FBUsage~FT:~RS   netstat ~RS
+> 
+> Displays a table of registered Netlinks and information about their
+> statuses.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\nuke.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS nuke
+> ~FBUsage~FT:~RS   nuke ~FY<~RSuser~FY>~RS~RS
+> 
+> Erases a user's account. Purge can take care of this task automaticly.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\outmsg.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS outmsg
+> ~FBUsage~FT:~RS   outmsg ~FY<~RSmessage~FY>~RS~RS
+> 
+> Sets the message that users see when you exit a room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\passwd.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS passwd
+> ~FBUsage~FT:~RS   passwd ~FY<~RSnew password~FY>~RS ~FY<~RSold
+> password~FY>~RS~RS
+> 
+> IF the first argument matches your current user password, your password
+> will be set to the second argument.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\private.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS private
+> ~FBUsage~FT:~RS   private ~RS
+> 
+> Designates the current room as private.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\promote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS promote
+> ~FBUsage~FT:~RS   promote ~FY<~RSuser~FY>~RS~RS
+> 
+> Promotes a user to the next rank.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\public.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS public
+> ~FBUsage~FT:~RS   public ~RS
+> 
+> Designates the current room as having accessable to the public.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\purge.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+> ~FBCommand~FT:~RS purge
+> ~FBUsage~FT:~RS   purge ~RS
+> 
+> Removes out-of-date userfiles.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\ranks.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS ranks
+> ~FBUsage~FT:~RS   ranks ~RS
+> 
+> Lists the ranks and the ammount of commands held by each rank.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\read.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS read
+> ~FBUsage~FT:~RS   read ~RS
+> 
+> Reads the message board.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\reboot.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS reboot
+> ~FBUsage~FT:~RS   reboot ~FR[~RS~FY<~RSsecs~FY>~RS/cancel~FR]~RS~RS
+> 
+> Reboots the talker. The reboot can be timed by using the seconds
+> argument or immediate if no arguments are given. To cancel a timed
+> reboot sequence, use the cancel argument.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\review.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS review
+> ~FBUsage~FT:~RS   review ~RS
+> 
+> Reviews the last few lines of the conversation in the current room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\rmail.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS rmail
+> ~FBUsage~FT:~RS   rmail ~RS
+> 
+> Reads the mail other users may have sent you by using the smail command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\rooms.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS rooms
+> ~FBUsage~FT:~RS   rooms ~RS
+> 
+> Lists all rooms available on the talker and their statuses.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\rstat.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS rstat
+> ~FBUsage~FT:~RS   rstat ~FY<~RSnetlink~FY>~RS~RS
+> 
+> Requests remote statistics from an active Netlink.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\samesite.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS samesite
+> ~FBUsage~FT:~RS   samesite user/site ~FY<~RSusername~FY>~RS/~FY<~RSsitename~FY>~RS ~FR[~RS~FY<~RSall~FY>~RS~FR]~RS~RS
+> 
+> Identifies possible multi-accounts.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\say.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS say
+> ~FBUsage~FT:~RS   say ~FY<~RSmessage~FY>~RS~RS
+> 
+> Displays a message to all users in the same room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\semote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS semote
+> ~FBUsage~FT:~RS   semote ~FY<~RSemotion~FY>~RS~RS
+> 
+> Broadcasts an emotion to all users, reguardless of which room they are
+> in. This does not reveal the user that made the broadcast.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\sendver.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS sendver
+> ~FBUsage~FT:~RS   sendver ~RS
+> 
+> Sends a verification message to your email.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\shout.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS shout
+> ~FBUsage~FT:~RS   shout ~FY<~RStext~FY>~RS~RS
+> 
+> Shouts a message so that all users receive it, reguardless of what room
+> they are in.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\show.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS show
+> ~FBUsage~FT:~RS   show ~FY<~RSprompt~FY>~RS~RS
+> 
+> Sends a prompt to all users in the room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\shutdown.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS shutdown
+> ~FBUsage~FT:~RS   shutdown ~FR[~RS~FY<~RSsecs~FY>~RS/cancel~FR]~RS~RS
+> 
+> Shuts the talker down. The shutdown can be timed by using the seconds
+> argument or immediate if no arguments are given. To cancel a timed
+> shutdown sequence, use the cancel argument.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\sing.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS sing
+> ~FBUsage~FT:~RS   sing ~FY<~RSlyrics~FY>~RS~RS
+> 
+> Allows you to sing a song.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\site.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS site
+> ~FBUsage~FT:~RS   site ~FY<~RSuser~FY>~RS~RS
+> 
+> Displays the last or current site from which a user logged into the
+> talker. This command will not work on Netlink users.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\smail.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS smail
+> ~FBUsage~FT:~RS   smail ~FY<~RSuser~FY>~RS
+> 
+> If no second argument is given, the line editor is invoked for you to
+> enter your message. The message will be sent to the user specified in
+> the first argument.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\suicide.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS suicide
+> ~FBUsage~FT:~RS   suicide ~FY<~RSpassword~FY>~RS~RS
+> 
+> Erases your own account. This command should only be used if you have
+> absolutly no intentions on returning to the talker. Once you use the
+> suicide command, there is no way to easily retrieve your userfile. For
+> this reason many talkers will not even attempt to recover it.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\swban.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+> ~FBCommand~FT:~RS swban
+> ~FBUsage~FT:~RS   swban ~RS
+> 
+> Toggles the talker's swear ban level trough minimum, maximum, and off.
+> Minimum swearban will cross out swears, maximum will not allow for any
+> swearing whatsoever, and off will not filter swears.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\system.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS system
+> ~FBUsage~FT:~RS   system ~RS
+> 
+> Displays various information about the server and host system.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\tell.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS tell
+> ~FBUsage~FT:~RS   tell ~FY<~RSuser~FY>~RS ~FY<~RSmessage~FY>~RS~RS
+> 
+> Privatly tells a user a message.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\think.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS think
+> ~FBUsage~FT:~RS   think ~FY<~RSthought~FY>~RS~RS
+> 
+> An emotion macro designed to show your thoughts.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\topic.HF] 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS topic
+> ~FBUsage~FT:~RS   topic ~FY<~RStopic~FY>~RS~RS
+> 
+> Sets the topic for the current room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\unfix.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS unfix
+> ~FBUsage~FT:~RS   unfix ~RS
+> 
+> Unfixes access to the room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\unmuzzle.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS unmuzzle
+> ~FBUsage~FT:~RS   unmuzzle ~FY<~RSuser~FY>~RS~RS
+> 
+> Removes a muzzle that has been put on a user.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\verify.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS verify
+> ~FBUsage~FT:~RS   verify ~FY<~RSverification number~FY>~RS~RS
+> 
+> Verifys that you have received an email from the verification system.
+> This will allow you to have your talker mail forwarded automaticly to
+> your email.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\version.HF] 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS version
+> ~FBUsage~FT:~RS   version ~RS
+> 
+> Displays the version of SouthWest on which this system is operating.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\visible.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS vis
+> ~FBUsage~FT:~RS   vis ~RS
+> 
+> Returns you from an invisible state.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\wake.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS wake
+> ~FBUsage~FT:~RS   wake ~FY<~RSuser~FY>~RS~RS
+> 
+> Sends a beep to the user's terminal to try to wake him up.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\who.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS who
+> ~FBUsage~FT:~RS   who ~RS
+> 
+> This command shows which users are online at the moment and each users'
+> description, what room they are in, rank, time online, and idle time
+> are. Also, the system date and time are printed at the top.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\write.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS write
+> ~FBUsage~FT:~RS   write
+> 
+> If no argument is given, the line editor is invoked for you to type your
+> message. The message is then posted on the message board of the room in
+> which you currently are.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[OPEN_FILE .\Help\allclones.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS allclones
+> ~FBUsage~FT:~RS  allclones ~RS
+> 
+> Lists all active clones on the system.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\arrest.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS arrest
+> ~FBUsage~FT:~RS  arrest ~FY<~RSuser~FY>~RS~RS
+> 
+> Arrests a user.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\ban.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS ban
+> ~FBUsage~FT:~RS  ban user/site/new ~FY<~RSuser/site~FY>~RS~RS
+> 
+> Restricts a site or banishes a user or site.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\dmail.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS dmail
+> ~FBUsage~FT:~RS  dmail wipe all
+>            :  dmail ~FY<~RS#~FY>~RS
+>            :  dmail to ~FY<~RS#~FY>~RS
+>            :  dmailfrom ~FY<~RS#~FY>~RS to ~FY<~RS#~FY>~RS~RS
+> 
+> Deletes some or all of your talker mail.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\emote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS emote
+> ~FBUsage~FT:~RS  emote ~FY<~RSemotion~FY>~RS~RS
+> 
+> Expresses an emotion to all users in the room in which you are currently
+> located. The emotion specified will be displayed preceeded by your name.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\expire.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS expire
+> ~FBUsage~FT:~RS  expire ~FY<~RSuser~FY>~RS~RS
+> 
+> Toggles whether or not a user will expire with purge. Use this command
+> if a user has informed you that they will be away for an extended period
+> of time and do not want their account to be removed.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\homepage.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS homepage
+> ~FBUsage~FT:~RS  homepage ~FY<~RSurl~FY>~RS~RS
+> 
+> Registers your homepage with the talker.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\icq.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS icq
+> ~FBUsage~FT:~RS  icq unset/~FY<~RSICQ number~FY>~RS~RS
+> 
+> Sets or unsets your ICQ number. If you set your ICQ number, the server
+> administrators can easily ICQ you through their server interface.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\invite.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS invite
+> ~FBUsage~FT:~RS  invite ~FY<~RSuser~FY>~RS~RS
+> 
+> Invites a user into a private room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\knock.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS knock
+> ~FBUsage~FT:~RS  knock ~FY<~RSroom~FY>~RS~RS
+> 
+> Requests your invitation into a private room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\lban.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS lban
+> ~FBUsage~FT:~RS  lban users/sites/new~RS
+> 
+> Lists all restricted sites (new) or banned users or sites.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\mutter.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS mutter
+> ~FBUsage~FT:~RS  mutter ~FY<~RSuser~FY>~RS ~FY<~RSmessage~FY>~RS~RS
+> 
+> Mutters a message to all users in the room execpt the user specified by user.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\myclones.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS myclones
+> ~FBUsage~FT:~RS  myclones ~RS
+> 
+> Lists all of your active clones.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\pager.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS pager
+> ~FBUsage~FT:~RS  pager ~FR[~RS~FY<~RSpage length~FY>~RS~FR]~RS~RS
+> 
+> Sets the heigth of your client window.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\pemote.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS pemote
+> ~FBUsage~FT:~RS  pemote ~FY<~RSuser~FY>~RS ~FY<~RSemotion~FY>~RS~RS
+> 
+> Expresses an emotion privately to the user specified by user. This
+> command can be thought of as a cross between the tell command and the
+> emote command.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\people.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS people
+> ~FBUsage~FT:~RS  people ~RS
+> 
+> Displays mostly information on users and the sockets they occupy. This
+> command lets you check for users that are in the proccess of logging in
+> as well.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\picture.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS picture
+> ~FBUsage~FT:~RS  picture ~FR[~RS~FY<~RSpicture~FY>~RS~FR]~RS~RS
+> 
+> Displays a picture to the room, if an arugment is given. If no argument
+> is given, the picture command will list all available pictures.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\preview.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS preview
+> ~FBUsage~FT:~RS  preview ~FR[~RS~FY<~RSpicture~FY>~RS~FR]~RS~RS
+> 
+> Previews a picture privately. If no argument is given, the preview
+> command will list all available pictures.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\rules.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS rules
+> ~FBUsage~FT:~RS  rules ~RS
+> 
+> Shows you the talker's rule list.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\sayto.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS sayto
+> ~FBUsage~FT:~RS  sayto ~FY<~RSuser~FY>~RS ~FY<~RSmessage~FY>~RS~RS
+> 
+> Directs speach to a particular user for the reason of clarity. All users
+> in the room will still see the message but this helps clear up exactly
+> who it is that you are trying to message.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\syslog.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS syslog
+> ~FBUsage~FT:~RS  syslog ~RS
+> 
+> Reads the system logbook.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\time.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS time
+> ~FBUsage~FT:~RS  time ~RS
+> 
+> Reports the talker time.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\topic.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS topic
+> ~FBUsage~FT:~RS  topic ~FY<~RSnew topic~FY>~RS~RS
+> 
+> Sets the room topic to the topic specified by topic.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\unarrest.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS unarrest
+> ~FBUsage~FT:~RS  unarrest ~FY<~RSuser~FY>~RS~RS
+> 
+> Unarrests a user.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\unban.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS unban
+> ~FBUsage~FT:~RS  unban user/site/new ~FY<~RSuser/site~FY>~RS~RS
+> 
+> Removes a site restriction, site ban, or user ban.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\uninvite.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS uninvite
+> ~FBUsage~FT:~RS  uninvite ~FY<~RSuser~FY>~RS~RS
+> 
+> Uninvites a user from a private room.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\ustat.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS ustat
+> ~FBUsage~FT:~RS  ustat ~FR[~RS~FY<~RSuser~FY>~RS~FR]~RS~RS
+> 
+> Displays user statistics about the specified user. If no argument is
+> give, ustat gives the details of your own account.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\version.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS version
+> ~FBUsage~FT:~RS  version ~RS
+> 
+> Shows the version of SouthWest that the talker is currently using.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> 
+[OPEN_FILE .\Help\wipe.HF]
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+> ~FBCommand~FT:~RS wipe
+> ~FBUsage~FT:~RS  wipe wipe all
+>            :  wipe ~FY<~RS#~FY>~RS
+>            :  wipe to ~FY<~RS#~FY>~RS
+>            :  wipe from ~FY<~RS#~FY>~RS to ~FY<~RS#~FY>~RS~RS
+> 
+> Wipes some or all messages from the room's message board.
+> 
+> ~FY+~FB-----------------------------------------------------------------------~FY+~RS
+[SET_MSG Installing ASCII Art]
+[OPEN_FILE .\Pictures\ack.txt]
+>  ____/|
+>  \ o.O| <- Ack!
+>   =(_)=
+>     U
+[OPEN_FILE .\Pictures\alligator.txt]
+> ~FG
+> ~FG                      _.---._     .---.
+> ~FG            __...---' .---. `---'-.   `.
+> ~FB  ~ -~ -~FG.-''__.--' _.'~FY( | )~FG`.  `.  `._ :
+> ~FB -.~~ ~FG.'__-'_ .--'' ._`---'_.-.  `.   `-`.
+> ~FB  ~ ~_~-~-~_ ~~FG -._ -._``---. -.    `-._   `.
+> ~FB    ~- ~ ~ -_ -~ ~~FG -.._ _ _ _ ..-_ `.  `-._``--.._
+> ~FB     ~~-~ ~-_ _~ ~-~ ~ -~ _~~_-~~FG -._  `-.  -. `-._``--.._.--''. ~FB~ -~_
+> ~FB         ~~ -~_-~ _~- _~~ _~-_~ ~-_~~ ~~FG-.___    -._  `-.__   `. `.~FB ~ -_~
+> ~FB             ~~ _~- ~~- -_~  ~- ~ - _~~- _~~ ~~FG---...__ _    ._ .` `.~FB ~-_~ 
+> ~FB                ~ ~- _~~- _-_~ ~-_ ~-~ ~_-~ _~- ~_~-_~  ~~FG--.....--~~FB -~_ ~
+> ~FB                     ~ ~ - ~  ~ ~~ - ~~-  ~~- ~-  ~ -~ ~ ~ -~~-  ~- ~-~
+[OPEN_FILE .\Pictures\balloons.txt]
+> ~FR    .-'"'-.
+> ~FR   / #     \      
+> ~FR  : #       :   ~FG.-'"'-.
+> ~FR   \       /  ~FG / #     \
+> ~FR    \     /   ~FG: #       :
+> ~FR     `'q'`   ~FG  \       /
+>        (        ~FG\     /
+>         )~FB .-'"'-.~FG`'q'`
+>        ( ~FB/ #     \~RS (  
+>         )~FB #       :~RS ) ~FY.-'"'-.
+>        ( ~FB\       /~RS ( ~FY/ #     \
+>          ~FB \     /~RS   )~FY #       :
+>            ~FB`'q'`~RS   (~FY \       /
+>              ( ~FY       \     /
+>               )      ~FY  `'p'`
+>              (           )
+>               )         (
+>                         )
+[OPEN_FILE .\Pictures\band.txt]
+> ~FY                     .'|            () 
+> ~FY                  .-'  |           /  
+> ~FR     .-~FY}         /~FR.-~FY}  |     ~FR.-~FY}  ~FY/ 
+> ~FR     |_|     ~FY   ( ~FR|_|~FY-.|     ~FR|_|~FB/\ 
+>      (_),   ~FY     \~RS(_)        (_) ~FB/ 
+> ~FB     | \X~FY\~FB        | \~FY\ ~FB      | \/ 
+> ~FB     |\_/~FY\\_     ~FB |\_/ ~FB      |\_\ 
+> ~FR     |~FW:~FR|~FY  \/  ~FR    |~FW:~FR|~FR        \~FW:~FR\   
+> ~FR     |~FW:~FR|~FR          |~FW:~FR|   ~FR     |\~FW:~FR| 
+> ~FR     |~FW:~FR|   ~FR       |~FW:~FR|      ~FR  ||~FW:~FR|
+> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[OPEN_FILE .\Pictures\bell.txt]
+> ~FR             _____      _____
+> ~FR         _.-(_____`;--;`_____)-._
+> ~FR     ,.-'   )      |__|      (   '-.,
+> ~FR      >  _.-\____.-'  '-.____/-._  <
+> ~FR     `''` ~FY     |~FG  /(      ~FY|~FR      `"'`
+> ~FY               |~FG  ) (     ~FY|
+> ~FY               |  ~FG\ /_._ ~FY |
+> ~FY               ;  ~FRoO~FG\   \ ~FY;
+> ~FY              /  ~FG/ \ '`\(~FY  \
+> ~FY            .'   ~FG) (    `~FY   '.
+> ~FY           [_____~FG)/~FY___________]
+> ~RS        ~FY          '=='
+[OPEN_FILE .\Pictures\bird.txt]
+> ~FB                      .--.
+> ~FB                    ." ~OL~FW o~RS~FB \~FY__
+> ~FB                 _.-"    ,(  ~FY`
+> ~FB             _.-"      ,~FT;~FB;|
+> ~FB        _.-=" _,"    ,,;;~FT;~FB'
+> ~FB    .-"`_.-"``-..,,~FT;~FB;;;:'
+> ~FB    `"'`      ~FY    `\`\
+> ~FY                   /^\\\
+[OPEN_FILE .\Pictures\bonsai.txt]
+>           ~OL~FG"~RS~FG~~~~~~~OL~FG'
+>         ~OL~FG"~RS~FG~~~OL~FG"~RS~FG~~OL~FG"~RS~FG~~~OL~FG"~RS~FG~~~
+>        ~FG~~~~OL~FG""`~RS~FG~~~OL~FG"'""~RS~FG~~
+>        ~OL~FG;~RS~FG~~ ~OL~FG''~RS~FY>,~OL~FG'.~RS~FG~~OL~FG""
+>             ~FY((
+>          ~OL~FB____~RS~FY))~OL~FB___
+>         ~OL~FB\~FY ^^^^^^^ ~FB/
+>          ~OL~FB`-------'
+[OPEN_FILE .\Pictures\bye.txt]
+>          **********   *****         *****  ************  *****  *****
+> 	 *         *   *   *       *   *   *          *  *   *  *   *
+> 	 *   ****   *   *   *     *   *    *   ********  *   *  *   *
+> 	 *   *  *   *    *   *   *   *     *   *         *   *  *   *
+> 	 *   *  *   *     *   * *   *      *   *         *   *  *   *
+> 	 *   ****   *      *   *   *       *   *****     *   *  *   *
+> 	 *         *        *     *        *       *     *   *  *   *
+> 	 *   ****   *        *   *         *   *****     *   *  *   * 
+> 	 *   *  *   *        *   *         *   *         *   *  *   *
+> 	 *   *  *   *        *   *         *   *         *****  *****
+> 	 *   ****   *        *   *         *   ********   ***    ***
+> 	 *         *         *   *         *          *  *   *  *   *
+> 	 **********          *****         ************   ***    ***
+[OPEN_FILE .\Pictures\cake.txt]
+> ~FR           ~                  ~FB~
+>    ~FG  *                   ~FM* ~FY               *       ~FR*
+>                  ~FG *~FB              ~FG *
+>  ~FY ~  ~FM     * ~FT               *     ~FR    ~ ~FB   *          
+>               ~FR*       ~FM~~FY        *          ~FY    *~FB   ~
+>                 ~FY  )         (         )              ~FG*
+>     ~FB* ~FY   ~   ~FY  ) (_)   (   (_)   )   (_) ( ~FM *
+> ~FR           * ~FY (_)~FB #~FY ) (_) ) ~FB#~FY ( (_) (~FB #~FY (_)       *
+>               ~FM_~FB#~FM.-~FB#~FY(_)~FM-~FB#~FM-~FY(_)~FB#~FY(_)~FM-~FB#~FM-~FY(_)~FB#~FM-.~FB#~FM_    
+>   ~FG*        ~FM .'~FB #  # #  #  # # #  #  # #  # `. ~FR  ~     ~FB*
+>           ~FM :  ~FB #    #  #  #   #  #  #    #   :   
+>     ~FT~     ~FM :.    ~FB   #     #   #     #       .:~FT      *
+>         ~FM* ~FM | `-.__                     __.-' | ~FY*
+>           ~FM |      `````"""""""""""`````      |       ~FM  *
+>      ~FY*    ~FM |         ~OL~FR|_||\ |_)|_)\ /     ~RS~FM    |    
+>           ~FM |        ~OL~FR | ||`\|  |   |      ~RS~FM    |       ~FR~
+>   ~FB ~~FR   * ~FM  |      ~FR~OL _   _ ___    _ ~FM           | ~FG* 
+> ~FM           |   ~FR   ~OL|_)||_) | |_|| \|\ \ / ~RS~FM    |       ~FB  *
+> ~FG   *~FT    _.-~FM|~FR~OL      |_)|| \ | | ||_/|`\ |~RS~FM      |~FT-._  
+> ~FT      .'   ~FM'.                               .'~FT   `.  ~FY*
+> ~FT  jgs :  ~FM    `-.__                     __.-' ~FT     :
+> ~FT       `.   ~FM      `````"""""""""""`````~FT         .'
+> ~FT         `-.._                             _..-'
+> ~FT              `````""""-----------""""`````
+[OPEN_FILE .\Pictures\candle.txt]
+> ~FY                 ,
+> ~FY                 )\
+> ~FY                / ,\
+> ~FY                |.:.|
+> ~FY                 \+/
+> ~FR             .'"-.~RS)~FR_
+> ~FR             |      '.
+> ~FR             )   ,_   \~FY       .--.
+> ~FR            (   /  \  |~FY      /.--.\
+> ~FR             `) |   | |~FY     //   ||
+> ~FR             (_/    \ |~FY    //    //
+> ~FR              |______\_)~FY  //    // _
+> ~FY        ,    (________)   ||   // `,\
+> ~FY        |'.___)______(___.'|   \'--'/
+> ~FY         \                /     '--'
+> ~FY          '.____________.'
+[OPEN_FILE .\Pictures\cowboy.txt]
+>              _M/ ~OL/
+>               (}~OL/"
+>              //\_~OL~FY,,;;;;/,
+>          ~FY.--~RS(~<'~OL~FY;;~~RS~FY  ,  '\
+> ~OL~FY   ,;;;~~RS~FY(~RS    >>~FY     / ``~-'
+> ~OL~FY  `~''  ~RS~FY`\ )-<-.< ) )__
+> ~FY         //'>/'  \\~-~~\
+> ~FY         |  `\ ~FR =~FY/'~FR    "
+> ~FR         "   "
+[OPEN_FILE .\Pictures\doves.txt]
+>                                                       _..._
+>                                             _..._   .'  _  '.
+>                                           .'  _  './   (a)~FY .-'-.
+>                                          /   (e)~FY .-'-.    ~FY '-,-'`
+>                                          |      ~FY'-,--'`     ~RS/
+>                                          ;       / ;       |
+> ~FG        _ ~RS                               /       |/       .\  ~FG  _
+> ~FG       (_\~RS                          __..;__      \        ::\ ~FG,/_)._
+> ~FG        _;\~RS;``""----...___...---:"``  .-'_ `'.    \        '::.~FR()~FG~FG\__)
+> ~FG     (\~FR()~RS)(`._'- `-._  ,:-"    '.    '.    -  :    ;        '::\~FG--;__
+> ~FG       _\~FR()~RS`''----...__ `-._    '-.    '._   .'    |        .:::|~FR()~FG~FG\_)
+> ~FG      (_/`;-.        _  ~FR()~RS`-.  `""--...____..-'`      ;_    .:::|~FG `.
+> ~FG           \_) _;/_)/).;~FR()~RS'._              (`\.-~FR()~FG;/_).__ ~RS .::::/~FR()~FG~FG.-./`)
+> ~FG              (_\`;(~FR()~FG(_/(~FR()~FG/(.        __.--;~FR()~FG;`\_)~FR()~FG\__) ~RS.::~FR()~FG~FG--;__:~FR()~FG
+> ~FG                 '-;---~FR()~FG_;\_/~FR()~RS"-._  ~FG(_/ (/ /~FR()~FG';~FR()~FG;--._\_~RS::'~FG`.~FR()~FG;\_)`
+> ~FG                  ,~FR()~FG   (_.-~FR()~FG; \._ ~RS``""~FG(_.~FR()~FG;_~FR()~FG.(`\.-~FR()~FG;__)`(_/ `--.__
+> ~FG                 (_/       (_/~FR()~FG \_)     __/(_/|\~FR()~FG;__\_)`            \_)
+> ~FG                                `          (_/    \_)`-._);
+[OPEN_FILE .\Pictures\dragon.txt]
+>                                                 __----~~~~~~~~~~~------___
+>                                      .  .   ~~//====......          __--~ ~~
+>                      -.            \_|//     |||\\  ~~~~~~::::... /~
+>                   ___-==_       _-~o~  \/    |||  \\            _/~~-
+>           __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~
+>       _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /
+>     .~       .~       |   \\ -_    /  /-   /   ||      \   /
+>    /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /
+>    |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\
+>             '         ~-|      /|    |-~\~~       __--~~
+>                         |-~~-_/ |    |   ~\_   _-~            /\
+>                              /  \     \__   \/~                \__
+>                          _--~ _/ | .-~~____--~-/                  ~~==.
+>                         ((->/~   '.|||' -_|    ~~-/ ,              . _||
+>                                    -_     ~\      ~~---l__i__i__i--~~_/
+>                                    _-~-__   ~)  \--______________--~~
+>                                   //.-~~~-~_--~- |-------~~~~~~~~
+>                                         //.-~~~--\
+[OPEN_FILE .\Pictures\edge.txt]
+>             ,,,
+>            (o o)
+>  ------oOO--(_)--OOo-------
+[OPEN_FILE .\Pictures\elmo.txt]
+> ~FW                   __   __
+> ~FW                 .'  '.'  `.          
+> ~FR              _.-~FW|  ~FBo~FW |~FB o~FW  |~FR-._
+> ~FR            .~   ~FW`.__.'.__.'~FR^  ~.   
+> ~FR          .~     ^  ~FY/   \~FR  ^     ~.
+> ~FR          \-._^   ^~FY|     |~FR    ^_.-/
+> ~FR          `\  `-._ ~FY \___/ ~FR^_.-' /' 
+> ~FR            `\_   `--...--'   /'
+> ~FR               `-.._______..-'      /\  /\  
+> ~FR                  __/   \__         | |/ /_
+> ~FR                .'^   ^    `.      .'   `__\     
+> ~FR              .'    ^     ^  `.__.'^ .\ \
+> ~FR             .' ^ .    ^   .    ^  .'  \/
+> ~FR            /    /        ^ \'.__.'
+> ~FR           |  ^ /|   ^      |
+> ~FR            \   \|^      ^  |           
+> ~FR             `\^ |        ^ |
+> ~FR               `~|    ^     |  
+> ~FR                 |  ^     ^ |
+> ~FR                 \^         / 
+> ~FR                  `.    ^ .'
+> ~FR                   : ^    ; 
+> ~FR           .-~~~~~~   |  ^ ~~~~~~-.
+> ~FR          /   ^     ^ |    ^       \
+> ~FR          \^     ^   / \  ^     ^  /  
+> ~FR           `~~~~~~~~'   `~~~~~~~~~' 
+[OPEN_FILE .\Pictures\fence.txt]
+> ~FY             *     ,MMM8&&&.            *
+> ~FY                  MMMM88&&&&&    .
+> ~FY                 MMMM88&&&&&&&
+> ~FY     *           MMM88&&&&&&&&
+> ~FY                 MMM88&&&&&&&&
+> ~FY                 'MMM88&&&&&&'
+> ~FY                   'MMM8&&&'      *
+>           |\___/|
+>           )     (    ~FY         .            '
+>          =\     /=~FY
+>            )~FM===~RS(~FY       *
+>           /     \
+>           |     |
+>          /       \
+>          \       /
+> ~FR  _/\_/\_/~RS\__  _/~FR_/\_/\_/\_/\_/\_/\_/\_/\_/\_
+> ~FR  |  |  |  |~RS( (~FR  |  |  |  |  |  |  |  |  |  |
+> ~FR  |  |  |  |~RS ) )~FR |  |  |  |  |  |  |  |  |  |
+> ~FR  |  |  |  |~RS(_(~FR  |  |  |  |  |  |  |  |  |  |
+> ~FR  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+> ~FR  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+[OPEN_FILE .\Pictures\girl.txt]
+>                          8888  8888888
+>                   888888888888888888888888
+>                8888:::8888888888888888888888888
+>              8888::::::8888888888888888888888888888
+>             88::::::::888:::8888888888888888888888888
+>           88888888::::8:::::::::::88888888888888888888
+>         888 8::888888::::::::::::::::::88888888888   888
+>            88::::88888888::::m::::::::::88888888888    8
+>          888888888888888888:M:::::::::::8888888888888
+>         88888888888888888888::::::::::::M88888888888888
+>         8888888888888888888888:::::::::M8888888888888888
+>          8888888888888888888888:::::::M888888888888888888
+>         8888888888888888::88888::::::M88888888888888888888
+>       88888888888888888:::88888:::::M888888888888888   8888
+>      88888888888888888:::88888::::M::;o*M*o;888888888    88
+>     88888888888888888:::8888:::::M:::::::::::88888888    8
+>    88888888888888888::::88::::::M:;:::::::::::888888888     
+>   8888888888888888888:::8::::::M::aAa::::::::M8888888888       8
+>   88   8888888888::88::::8::::M:::::::::::::888888888888888 8888
+>  88  88888888888:::8:::::::::M::::::::::;::88:88888888888888888
+>  8  8888888888888:::::::::::M::"@@@@@@@"::::8w8888888888888888
+>   88888888888:888::::::::::M:::::"@a@":::::M8i888888888888888
+>  8888888888::::88:::::::::M88:::::::::::::M88z88888888888888888 
+> 8888888888:::::8:::::::::M88888:::::::::MM888!888888888888888888
+> 888888888:::::8:::::::::M8888888MAmmmAMVMM888*88888888   88888888
+> 888888 M:::::::::::::::M888888888:::::::MM88888888888888   8888888
+> 8888   M::::::::::::::M88888888888::::::MM888888888888888    88888
+>  888   M:::::::::::::M8888888888888M:::::mM888888888888888    8888
+>   888  M::::::::::::M8888:888888888888::::m::Mm88888 888888   8888
+>    88  M::::::::::::8888:88888888888888888::::::Mm8   88888   888
+>    88  M::::::::::8888M::88888::888888888888:::::::Mm88888    88
+>    8   MM::::::::8888M:::8888:::::888888888888::::::::Mm8     4
+>        8M:::::::8888M:::::888:::::::88:::8888888::::::::Mm    2
+>       88MM:::::8888M:::::::88::::::::8:::::888888:::M:::::M
+>      8888M:::::888MM::::::::8:::::::::::M::::8888::::M::::M
+>     88888M:::::88:M::::::::::8:::::::::::M:::8888::::::M::M
+>    88 888MM:::888:M:::::::::::::::::::::::M:8888:::::::::M:
+>    8 88888M:::88::M:::::::::::::::::::::::MM:88::::::::::::M
+>      88888M:::88::M::::::::::*88*::::::::::M:88::::::::::::::M             
+>     888888M:::88::M:::::::::88@@88:::::::::M::88::::::::::::::M
+>     888888MM::88::MM::::::::88@@88:::::::::M:::8::::::::::::::*8
+>     88888  M:::8::MM:::::::::*88*::::::::::M:::::::::::::::::88@@
+>     8888   MM::::::MM:::::::::::::::::::::MM:::::::::::::::::88@@
+>      888    M:::::::MM:::::::::::::::::::MM::M::::::::::::::::*8
+>      888    MM:::::::MMM::::::::::::::::MM:::MM:::::::::::::::M
+>       88     M::::::::MMMM:::::::::::MMMM:::::MM::::::::::::MM
+>        88    MM:::::::::MMMMMMMMMMMMMMM::::::::MMM::::::::MMM
+>         88    MM::::::::::::MMMMMMM::::::::::::::MMMMMMMMMM
+>          88   8MM::::::::::::::::::::::::::::::::::MMMMMM
+>           8   88MM::::::::::::::::::::::M:::M::::::::MM
+>               888MM::::::::::::::::::MM::::::MM::::::MM
+>              88888MM:::::::::::::::MMM:::::::mM:::::MM
+>              888888MM:::::::::::::MMM:::::::::MMM:::M
+>             88888888MM:::::::::::MMM:::::::::::MM:::M
+>            88 8888888M:::::::::MMM::::::::::::::M:::M
+>            8  888888 M:::::::MM:::::::::::::::::M:::M:
+>               888888 M::::::M:::::::::::::::::::M:::MM
+>              888888  M:::::M::::::::::::::::::::::::M:M
+>              888888  M:::::M:::::::::@::::::::::::::M::M
+>              88888   M::::::::::::::@@:::::::::::::::M::M
+>             88888   M::::::::::::::@@@::::::::::::::::M::M
+>            88888   M:::::::::::::::@@::::::::::::::::::M::M
+>           88888   M:::::m::::::::::@::::::::::Mm:::::::M:::M
+>           8888   M:::::M:::::::::::::::::::::::MM:::::::M:::M
+>          8888   M:::::M:::::::::::::::::::::::MMM::::::::M:::M
+>         888    M:::::Mm::::::::::::::::::::::MMM:::::::::M::::M
+>       8888    MM::::Mm:::::::::::::::::::::MMMM:::::::::m::m:::M
+>      888      M:::::M::::::::::::::::::::MMM::::::::::::M::mm:::M
+>   8888       MM:::::::::::::::::::::::::MM:::::::::::::mM::MM:::M:
+>              M:::::::::::::::::::::::::M:::::::::::::::mM::MM:::Mm
+>             MM::::::m:::::::::::::::::::::::::::::::::::M::MM:::MM
+>             M::::::::M:::::::::::::::::::::::::::::::::::M::M:::MM         
+>            MM:::::::::M:::::::::::::M:::::::::::::::::::::M:M:::MM
+>            M:::::::::::M88:::::::::M:::::::::::::::::::::::MM::MMM
+>            M::::::::::::8888888888M::::::::::::::::::::::::MM::MM
+>            M:::::::::::::88888888M:::::::::::::::::::::::::M::MM
+>            M::::::::::::::888888M:::::::::::::::::::::::::M::MM
+>            M:::::::::::::::88888M:::::::::::::::::::::::::M:MM
+>            M:::::::::::::::::88M::::::::::::::::::::::::::MMM
+>            M:::::::::::::::::::M::::::::::::::::::::::::::MMM
+>            MM:::::::::::::::::M::::::::::::::::::::::::::MMM
+>             M:::::::::::::::::M::::::::::::::::::::::::::MMM
+>             MM:::::::::::::::M::::::::::::::::::::::::::MMM
+>              M:::::::::::::::M:::::::::::::::::::::::::MMM
+>              MM:::::::::::::M:::::::::::::::::::::::::MMM
+>               M:::::::::::::M::::::::::::::::::::::::MMM
+>               MM:::::::::::M::::::::::::::::::::::::MMM
+>                M:::::::::::M:::::::::::::::::::::::MMM
+>                MM:::::::::M:::::::::::::::::::::::MMM
+>                 M:::::::::M::::::::::::::::::::::MMM
+>                 MM:::::::M::::::::::::::::::::::MMM
+>                  MM::::::M:::::::::::::::::::::MMM
+>                  MM:::::M:::::::::::::::::::::MMM
+>                   MM::::M::::::::::::::::::::MMM
+>                   MM:::M::::::::::::::::::::MMM
+>                    MM::M:::::::::::::::::::MMM
+>                    MM:M:::::::::::::::::::MMM
+>                     MMM::::::::::::::::::MMM
+>                     MM::::::::::::::::::MMM
+>                      M:::::::::::::::::MMM
+>                     MM::::::::::::::::MMM
+>                     MM:::::::::::::::MMM
+>                     MM::::M:::::::::MMM:
+>                     mMM::::MM:::::::MMMM
+>                      MMM:::::::::::MMM:M
+>                      mMM:::M:::::::M:M:M
+>                       MM::MMMM:::::::M:M
+>                       MM::MMM::::::::M:M
+>                       mMM::MM::::::::M:M
+>                        MM::MM:::::::::M:M
+>                        MM::MM::::::::::M:m
+>                        MM:::M:::::::::::MM
+>                        MMM:::::::::::::::M:
+>                        MMM:::::::::::::::M:
+>                        MMM::::::::::::::::M
+>                        MMM::::::::::::::::M
+>                        MMM::::::::::::::::Mm
+>                         MM::::::::::::::::MM
+>                         MMM:::::::::::::::MM
+>                         MMM:::::::::::::::MM
+>                         MMM:::::::::::::::MM
+>                         MMM:::::::::::::::MM
+>                          MM::::::::::::::MMM
+>                          MMM:::::::::::::MM
+>                          MMM:::::::::::::MM
+>                          MMM::::::::::::MM
+>                           MM::::::::::::MM
+>                           MM::::::::::::MM
+>                           MM:::::::::::MM
+>                           MMM::::::::::MM
+>                           MMM::::::::::MM
+>                            MM:::::::::MM
+>                            MMM::::::::MM
+>                            MMM::::::::MM
+>                             MM::::::::MM
+>                             MMM::::::MM
+>                             MMM::::::MM
+>                              MM::::::MM
+>                              MM::::::MM
+>                               MM:::::MM
+>                               MM:::::MM:
+>                               MM:::::M:M
+>                               MM:::::M:M
+>                               :M::::::M:
+>                              M:M:::::::M
+>                             M:::M::::::M
+>                            M::::M::::::M
+>                           M:::::M:::::::M
+>                          M::::::MM:::::::M
+>                          M:::::::M::::::::M
+>                          M;:;::::M:::::::::M
+>                          M:m:;:::M::::::::::M
+>                          MM:m:m::M::::::::;:M
+>                           MM:m::MM:::::::;:;M
+>                            MM::MMM::::::;:m:M
+>                             MMMM MM::::m:m:MM
+>                                   MM::::m:MM
+>                                    MM::::MM
+>                                     MM::MM
+[OPEN_FILE .\Pictures\globe.txt]
+> ~FY             ___,
+> ~FY        _.-'` ~FW__~FY|~FW__
+> ~FY      .'  ~FB,-:::~FW\;'~FG,`'-, 
+> ~FY     /  ~FG.'-;_,;~FB::~FG':-;_,'.
+> ~FY    /  ~FB/~FG;   '/~FB::::~FG,::_`.-\
+> ~FY   |  ~FB|:~FG'`. (`~FB:::::~FG/` ` \`~FB|
+> ~FY   |  ~FB|..::~FG`\`-.~FB:::~FG\_   /~FB:|
+> ~FY   |  ~FB|:::::~FG(   `,~FB::.~FG`\ ;~FB'|
+> ~FY    \  ~FB\:::::~FG| .'~FB:::::~FG`-'~FB/
+> ~FY     \  ~FB`::::~FG;/~FB:::::::::'
+> ~FY      '._ ~FB`'-:::::::-'`
+> ~FY         `-.____|
+> ~FY           _____|_____
+> ~FY          /___________\
+[OPEN_FILE .\Pictures\hi.txt]
+>      ******       ******     ***************
+>      *    *       *    *    *             **
+>    *    * *     *    * *   *             * *
+>   *    *  *    *    *  *  *             * *
+>  ******   *   ******   * *************** *
+>  ******   *   ******   * ****************
+>  ******   *   ******   * ***************
+>  ******   *   ******   *      *****  *
+>  *******************   *      *****  *
+>  *******************   *    *******  *******
+>  *******************   *   *  ***** *     **
+>  ******   *   ******   *  *   ******     * *
+>  ******  *    ******  *  *    *****     * *
+>  ****** *     ****** *   *************** *
+>  *******      *******    ****************
+>  ******       ******     ***************
+> 
+>                   How ya doin?
+[OPEN_FILE .\Pictures\humming.txt]
+> ~FG       ,   _    ~FR    {`--.
+> ~FG      { \/`~FBo~FG;~FY====-~FR {:}'-.}~FG>, 
+> ~FG .----'-/`-/        ~FR{.--'  ~FG)) __  
+> ~FG  `'-..-|~FY,~FG/          __   // /_/
+> ~FG       /\/\          \_\_((_/___
+> ~FG       `--`               ))  \_\
+[OPEN_FILE .\Pictures\links.txt]
+> ~FM     /\    ~FB    /\
+> ~FM    //\\   ~FB   //\\
+> ~FM   //  \\  ~FB  //  \\
+> ~FM  //    \\ ~FB //    \\
+> ~FM //~FB  /\ ~FM \\~FB//  ~FM/\ ~FB \\
+> ~FM \\~FB //\\~FM //~FB\\ ~FM//\\~FB //
+> ~FM  \~FB//  \~FM// ~FB \~FM//  \~FB//
+> ~FB  //~FM\  //~FB\ ~FM //~FB\  //~FM\
+> ~FB // ~FM\\//~FB \\~FM// ~FB\\//~FM \\
+> ~FB \\ ~FM \/ ~FB //~FM\\ ~FB \/~FM  //
+> ~FB  \\    // ~FM \\    //
+> ~FB   \\  //  ~FM  \\  //
+> ~FB    \\//   ~FM   \\//
+> ~FB     \/    ~FM    \/
+[OPEN_FILE .\Pictures\panic.txt]
+> ~FG                                  ooo$o$$$$"$o"oooo
+> ~FG                              o$$$$$o$o$$o$"$o"$o$o"$ooo
+> ~FG                          oo$$$$"$$o"$o$o"$"o$$ $o"$o"o"ooo
+> ~FG                        o$$$$$$"$$$"$"o$"$"o$ $"o$"o"$"o$o$"oo               o
+> ~FG        " o  "        o$$$$$o$$$"$o$$"$o"$"o$"o$o$"$o"$o"o"o$oo         " $     "
+> ~FG      o o o  o      o$$$$$o$$$o"$$o$"$o$"$"o$"oo$o"o$"o$"o$o$ $o        " "o" "
+> ~FG        oo $ o     o$$"$$"$$o$"$$o$o"$o"$o$o"o$o"o$"o"o$"o"o"$"o$o    o"""$ "o
+> ~FG        "o"o""o   o$$$$"$$$o$$"$o$o$$"$"o$o$"o$o"$o"$"o"$"$ $o$o"o$ """""o$ "
+> ~FG         o$oo"o" $$$"$$$$o$$o$"$o$o"$"$"o$ $o$o"$o"$o"$"o"$"o$o"$ $       " "
+> ~FG         $$ "   o$$$$$"$o$$o$$$$o"$"$"o$"o$o$ $"o"$ $"$o"$o$ $o"$"o$       " o
+> ~FG         $$"    $$$"$$$$$o$"o$o$"$"$"o$o$"o"o$"$o"$"o$o"$o"o$"o"$"o"o       " o
+> ~FG         $o     $"$$$$o$$"$"$o$"$"$o"$o"o$"o$ $o"$"o$ $o$o"$o"$ " $"o o      "o "
+> ~FG        $oo     "$$$o""o$$$"$o"$o"$o$"o$"o$"o$"o$"o$o$o"o$"o$o"    $ oo" "      "o
+> ~FG        $oo o oo"$$$   "o$$$"$"$o"$o"$o"$ $o$o$"o$"oo"o$"o"o"     $o"$o$$$$o$o$$"""
+> ~FG       $$$$$$$"""$$$o    $ $$o$"$"$o"$o"$"o"o"o$o"$o"$"o"""       o$ "
+> ~FG       "          $$o      " $"$"$o"$o"$"o$"o$o"o$o"$ "          o"o
+> ~FG                  "$$o          """"$o$"o"o"$ o$o  "            o"$
+> ~FG                    $$$            "   "o" "                   o$ "
+> ~FG                     "$$o                                     $o"
+> ~FG                      "$"$o        ~FRoo$$$$o$$$$$$oo~FG         o$$"
+> ~FG                        ""$$oo   ~FRo$$$$$$$$$$$$$$$$oo~FG     o"$o"
+> ~FG                           "$"$$o$$$$$$$~FR$$$$$$$$$"$oo~FG$$$$"
+> ~FG                              """$"$$$$$$$~FR$$$$$$$$$$"$
+> ~FG                                  "" """"""~FR$$$$$$$$"$$o
+>                                            ~FR$$$o$$$"$$o$
+>                                             ~FR$$$$o$$"$$"$
+>                                             ~FR"$$$o$$$"""
+[OPEN_FILE .\Pictures\parrot.txt]
+> ~FY                ,      .-; 
+> ~FY             ,  |\    / /  __,
+> ~FY             |\ '.`-.|  |.'.-'
+> ~FY              \`'-:  `; : /
+> ~FY               `-._'.  \'|
+> ~FY              ,_.-=` ` `  ~,_
+> ~FY               '--,.~FR    .-.~FY ,=". 
+> ~FY                 /  ~FR   { ~FG~OL0~RS~FR )~OL~FY`;-.}
+> ~FY                 |  ~FR    '-'~OL~FY /__ |
+> ~FY                 /      ~OL~FY    \_,\|
+> ~FY                 |          (
+> ~FR             __ ~FY/ '          \
+> ~FG     /\_    ~FR/,'`~FY|     ' ~FR  .-~"~~-.
+> ~FG     |`.\_~FR |  ~FY /  ' ,   ~FR /        \
+> ~FG   _/  `, \~FR|  ~FY; ,     . ~FR|  ,  '  . |
+> ~FG   \   `, ~FR |  ~FY|  ,  ,   ~FR|  :  ;  : |
+> ~FG   _\  `, ~FR \  ~FY|.     ,  ~FR|  |  |  | |
+> ~FG   \`  `. ~FR  \ ~FY|   '   ~FG  |~FR\_|-'|_,'\|
+> ~FG   _\   `, ~FR  `~FY\  '  . ' ~FG| |  | |  |        ~FG   __
+> ~FG   \     `, ~FY  | ,  '    ~FG|_/'-|_\_/     ~FG__ ,-;` /  
+> ~FG    \    `,  ~FY  \ .  , ' ~FY.| | | | |   ~FG_/' ` _=`|
+> ~FG     `\    `, ~FY  \     ,  ~FY| | | | |~FG_/'   .="  /
+> ~FG     \`     `, ~FY  `\     ~FY \/|,| ;~FG/'   .="    |
+> ~FG      \      `, ~FY   `\' ,  | ;~FG /'    ="    _/
+> ~FG       `\     `,  ~FM.-""-.~FY ': ~FG/'    ="     /
+> ~FG        _`\    ;~FM_{  '   ; ~FG/'    ="      /
+> ~FG       _\`-/__~FM.~  `.~.'."`~-.~FG ="     _,/
+> ~FG    __\      ~FM{   '-.~OL~FY(~RS~FM.'.--~'`}~FG"    _/
+> ~FG    \    .="`~FM }.-~"'~OL~FYu~RS~FM'-. '-..'~FG  __/
+> ~FG   _/  ."    ~FM{  -'.~('-._,.'~FG\_,/
+> ~FG  /  ."    _/'~FM`--; ;  `.  ;
+> ~FG   .="  _/'     ~FM `-..__,-'
+> ~FG    __/'~FT~OL           *      ~RS~FY +
+[OPEN_FILE .\Pictures\planet.txt]
+> ~FT~OL           *      ~RS~FY +
+> ~FY  *      '                  |
+> ~FY     ()    ~FT.-.~FG,-"``"-.    - ~RSo~FY -
+> ~FT           '=~FG/~FT_       ~FG\     ~FY|
+> ~RS        * ~FG  |::~FT'=._~FG    ;       ~FW ' 
+> ~FY  '~FG          \::.~FT  `=.~FG/~FT`,~FY   '
+> ~FY     +    . ~FG  '-::..-'~FT``'~OL     *~RS
+> ~RS       O~FY    *     .       +  .
+>           ~FY*~RS     .~FY       +
+[OPEN_FILE .\Pictures\pooh.txt]
+> ~FY                    _.
+> ~FY        ,-.,-"`""-./  \
+> ~FY       /   \        `-.|
+> ~FY       \   /           `-.
+> ~FY       |                 "=\
+> ~FY       |        .=="    |~RSo~FY_|~RS_
+> ~FY       |         _~RSo.  ~FY   ` ~RS(_)
+> ~FY       ;                     \\
+> ~FY        \             _.     /|-.
+> ~FY         \           ` `'---'/   \
+> ~FY          \       .--._     /-'   |
+> ~FR         ,-~FY`.    /     `-._(     /
+> ~FR         `-._~FY`-._\         `\   '\
+> ~FR           ( `  ~FY  `'._  _,   |    \
+> ~FR           /    ~-.~FY   `|     |    |
+> ~FR          /        `;-.~FY|     |    |
+> ~FR        .'  \         /~FY|     |    /
+> ~FR      .'-.   '.      | ~FY\     |  .'
+> ~FR      `-._     '.    |       /"` ~FY`\
+> ~FY       /~FR  `"--.,_'-._\-.___.'~FY_     ;
+> ~FY      /    ~FR      `""";--'~FY     `.   |
+> ~FY     /            .'`            \ /""-.
+> ~FY    ;            /                \""-, \
+> ~FY    |           /                 |    \ |
+> ~FY    \           |          '.           |/
+> ~FY     '.          \         .'`-.        /
+> ~FY       '._        '.,___,.;'    '-.___.'
+> ~FY          `"""----------'`
+[OPEN_FILE .\Pictures\rose.txt]
+> ~FR~OL                     .     .
+> ~FR~OL                 ...  :``..':
+> ~FR~OL                  : ````.'   :''::'
+> ~FR~OL                ..:..  :     .'' :
+> ~FR~OL             ``.    `:    .'     :
+> ~FR~OL                 :    :   :        :
+> ~FR~OL                  :   :   :         :
+> ~FR~OL                  :    :   :        :
+> ~FR~OL                   :    :   :~FG~OL..''''``::.
+> ~FR~OL                    :~FG~OL ...:..'     .''
+> ~FG~OL                    .'   .' ~RS~FG .::::'
+> ~FG~OL                   :..'''``~RS~FG:::::::
+> ~FG~OL                   '        ~RS~FG `::::
+> ~FG                              `::.
+> ~FG                                `::
+> ~FG                                 :::.
+> ~FG~OL                      ..:.:.::'`.~RS~FG ::~OL'`.  . : : .
+> ~FG~OL                    ..'      `:.:~RS~FG ::~OL   :'       .:
+> ~FG~OL                   .:        .:``~RS~FG:::~OL  :       .: ::
+> ~FG~OL                   .:    ..''     ~RS~FG:::~OL.'    :':    :
+> ~FG~OL                    : .''         ~RS~FG.::~OL : : '
+> ~FG~OL                     :          ~RS~FG.'`::
+> ~FG                                   ::
+> ~FG                                   ::
+> ~FG                                   ::
+> ~FG                                   ::
+> ~FG                                   ::   
+> ~FG                                   :'
+[OPEN_FILE .\Pictures\sailing.txt]
+> ~FT::::~FW.--.-.~FT:::::::::::::::::::::::::::::::::::::::::::::::::::::
+> ~FT:::~FW( (    )~FT::::::::::::::::::::::::::::::::::::::::::::::::::::
+> ~FT::~FW(_,  \ ) ,_)~FT:::::::::::::::::::::::::::::::::::~FY|~FT:::::::::::::
+> ~FT:::::~FW-'--`--~FT::::::::::::::~FR~~~FW|~FT:::::,::::::::::::~FY\ _ /~FT:::::::::::
+> ~FT:::::::::::::::::::::::::::~FW,|`-._/|~FT::::::::~FY-==  (_)  ==-~FT:::::::
+> ~FT:::::::::::::::~FW^^~FT::::::::~FW.' |   /||\~FT:::::::::::~FY/   \~FT:::::::::::
+> ~FT:::::::::::~FW^^~FT::::::::::~FW.'   | ./ ||`\~FT::::::::::::~FY|~FT:::::::::::::
+> ~FT::::::::::::::::::::::~FW/ `-. |/._ ||  \~FT:::::::::::::::::::::::::
+> ~FT:::::::::::::::::::::~FW/     `||  `|;-._\~FT::::::::::::::::::::::::
+> ~FT:::::::::::::::::::::~FW|      ||   ||   \~FT::::::::::::::::::::::::
+> ~FB~^~_~^~_-~^~=~^~~^= ~FW/       ||   ||__  \~FB~^=~^~-~^~_~^~=~^~-~^~ 
+> ~FB ~^~ ~=~^~ _~^~ =~ ~FW`--------|`---||  `"-`~FY___~FB~~^~ =_~^=~~^~=`~^
+> ~FB      ~^~=~^_~^~ =~ ~FY\~~~~~~~'~~~~'~~~~/~~``~FB ~=~^~ ~^=_~^~ ~~^
+> ~FB ~^~ ~^=~^~_~-=~^~ ^ ~FY`--------------'~FW~~FB^~=~^~_~^=~^~=~ ~^~-~^=
+> ~FB  ~^~=~ ~^=~^~ ~^~^=~^~-~^~ ~^~=~^~^~ =~^~^=~^~^=~^~^ =~~`~^
+> ~FB     ~^~= ~^~= ~~^~~`=~``^~^^~= ~^=~^~^~^ =`^~^`^~^=~^~-~~^
+[OPEN_FILE .\Pictures\snow.txt]
+> ~FW          ____
+> ~FW       .-"~FT ~FB+~FT' ~FW"-.
+> ~FW      /~FT.'.'~FBA_~FT'*`.~FW\
+> ~FW     |~FT:.*'~FB/\-\~FT. ':~FW|
+> ~FW     |~FT:.'.~FB||"|~FT.'*:~FW|
+> ~FW      \~FT:~^~^~^~^:~FW/
+> ~FY       /~FW`-....-'~FY\
+> ~FY      /          \
+> ~FY      `-.,____,.-'
+[OPEN_FILE .\Pictures\southwest.txt]
+> ~FY ____                   __      __
+> ~FY/  _|                   \ \    / /      ~RShttp://www.talker.com/southwest
+> ~FY\  \   _   __    _    _  \ \/\/ / _    ___  _
+> ~FY__\ \ / \ | || _| |_ | |_ \    / / _\ _\ /_| |_~FR.....~RS
+> ~FY|___/ \_/ \__|  \_\  |_\_| \/\/  \__\ |_\  \_~FR$$$$$$$$c~RS
+> ~FG ____________________________             ~FRzF  *$$$$$$$b~RS
+> ~FG< ~FY~OL SouthWest Talker Server~RS   ~FG\          ~FRd$F   "$$$$$$$P
+> ~FG > ~FY========= ====== ======    ~FG\        ~FR$$$F    "P"    .
+> ~FG< ~FT ~OLSouthWest~RS - The one and     ~FG\       ~FRd$$$F  .e$.    z$~RS
+> ~FG >~RS only Windows talker server.  ~FG\     ~FR$$$$$P=d" c^% d$$$~RS
+> ~FG< ~RS Written by Scott Lloyd in the ~FG\___ ~FR$$$$$P=d" c^% d$$$~FG ______________
+> ~FG >~RS belief that talkers should be      ~FR$$$   *$ec.r'$$$$P~FG              /
+> ~FG< ~RS free and easy to run. Long live    ~FR$P     $$""  $$$$"~FG             /
+> ~FG >~RS the freeware!                      ~FR-e$$$$$$L    $$"~FG              /
+> ~FG< ~RS                                     ~FR"$$$$$$$b.  P"~FG              /
+> ~FG >~RS (c) 1999 - Scott Lloyd                ~FR^$$$$$$$$r^~FG              /
+> ~FG<________________________________________________________________/
+[OPEN_FILE .\Pictures\there.txt]
+> .              +   .               . . ' .  . . '  *
+>                   .                    .   '   . '+  *
+>   .       *                        . . . .  .   .  + .
+>   M        "You are here"             .   .  +  . . .
+> .                 |             .  .   .    .    . .
+>                   |           .     .     . +.    +  .
+>                  \|/            .       .   . .  V
+>         . .       E          .    * . . .  .  +   .
+>            +   m  .           .   .      +
+>                             .       . +  .+. .
+>   .                      .     . + .  . .     .      .
+>            .      .    .     . .   . . .
+>       *             .    . .  +    .  .         X
+>           .     .    .  +   . .  *  .       .  /|\
+>                . + .  .  .  .. +  .             |
+> .      .  .  .  *   .  *  . +..  .        The action is
+>  .      .   . .   .   .   . .  +   .    . over here!
+[OPEN_FILE .\Pictures\town.txt]
+> ~FY     .            
+> ~FY    \ _ /~FW     .-='-. ~FR_~FWdb~FR_~FW      .--==-,
+> ~FY  -= (_) =-~FW  (_  (  _~FRIIII~FW_   _(    )  `.
+> ~FY    /   \~FW      (    |" " |-.(  ` ,_  `  )
+> ~FY      ' ~FW        '-._~FRHHHHHH~FW  `)---' `'--'    =.=
+> ~FW                    |.   |--`                    =.=
+> ~FW                    |    |      =.=
+> ~FR          _H___,=====;___~FW|           =.=
+> ~FR       n_/____/____/~FW``~FR\__\
+> ~FR      /__~FW|:: :|. .|:::|::|                  =.=
+> ~FG   _%&~FW|~RS__~FG&%~RS_~FW"~RS_~FW|~RS_~FW"~RS_~FW|~RS_~FW ~FRH~FW|~RS__~FW|~RS__
+>      `";;;;`";;;;'";;'"';;;;``;;-.
+>   .  ' `";;'  `;;;  `;'   `;  .`' `\
+>   . '  .  `' .  `';.    '   .   .  |~FB^-`^~_^^~``-^^_~^^-`^~
+>      '    `    `      '   `    '   ;~FB_~ -   _-~  _`  ~  -_ `
+> ~FB   ` - ` -` _ ~ ` ~ -   .    '   -    _ -.   ,
+> ~FB       '   .   -    ~   .   ~  '  -  `
+[OPEN_FILE .\Pictures\vase.txt]
+> ~FM                @~FY(\/)
+> ~FY             (\/)-~FR{}~FY-)~FM@
+> ~FM           @~FY(=~FR{}~FY=)/\)(\/)
+> ~FY          (\/(/\)~FM@~FY| (-~FR{}~FY-)
+> ~FY         (=~FR{}~FY=)~FM@~FY(\/)~FM@~FY(/\)~FM@
+> ~FY          (/\)\(=~FR{}~FY=)/(\/)
+> ~FM          @~FY(\/)\(/\)/(=~FR{}~FY=)
+> ~FY          (-~FR{}~FY-)~FB""""~FM@~FB/~FY(/\)
+> ~FY           (/\)~FB|:   |
+> ~FB              /::'   \
+> ~FB             /:::     \
+> ~FB            |::'       |
+> ~FB            |::        |
+> ~FB            \::.       /
+> ~FB             ':______.'
+> ~FB              `""""""`
+[OPEN_FILE .\Pictures\wolf.txt]
+> ~FY               ..:::::..
+> ~FY             .:::::::::::.
+> ~FY            :::::::::::::::
+> ~FY           :::::::::::::::::
+> ~FY           :::::::_/|:::::::
+> ~FY            ::::=/_/:::::::
+> ~FY             `:_/ |::::::'
+> ~FY          ~FY(   /  ,|:::''
+> ~FR          ~FY \_/^\/||~FR__
+> ~FR        _/~  `""~`"` \_
+> ~FR     __/  -'/  `-._ `\_\__
+> ~FR   /     /-'`  `\   \  \-.\
+[SET_MSG Informing user of completion]
+[WIN_BOX AutoPatch has completed the initial setup of SouthWest. Your talker server is now fully functional and will finish loading as soon as you click the 'Ok' button. Please read the Help files to answer any questions. The help files are accessible from the Help menu. You can contact me at southwest@talker.com if you have any problems. Thank you for using SouthWest. <NEWLINE><NEWLINE>Scott Lloyd<NEWLINE>SouthWest Programmer<NEWLINE><NEWLINE>Please visit the SouthWest website at http://www.talker.com/southwest]
+[SET_MSG Displaying credits]
+[WIN_BOX SouthWest Credits:<NEWLINE>Programming:<NEWLINE><TAB>Scott Lloyd<NEWLINE>Beta Testing<NEWLINE><TAB>Rick Szajkowski<NEWLINE><TAB>Krysia Kwiatkowski<NEWLINE>Special Thanks<NEWLINE><TAB>The fine people at Talker.com<NEWLINE><TAB>Joan Stark<NEWLINE><TAB>Neil Robertson<NEWLINE><TAB>Andrew Collington<NEWLINE><TAB>David Gatewood]
+[SET_MSG Displaying dedications]
+[WIN_BOX SouthWest is dedicated to Krysia Kwiatkowski.<NEWLINE><NEWLINE>I love you, Krysia]
